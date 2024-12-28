@@ -1,0 +1,160 @@
+@font-face {
+    font-family:'Peyda' ;
+    src: url('../fonts/Peyda/Peyda-ExtraBold.ttf');
+}
+@font-face {
+    font-family:'AUGUSTUS' ;
+    src: url('../fonts/YekanBakhVariableR/TTF/YekanBakh-Light.ttf');
+}
+
+*,*::after,*::before{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family:'AUGUSTUS';
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    scroll-behavior: smooth;  
+
+    &:focus{
+        outline: none;
+    }
+     ::-webkit-scrollbar {
+        width: 0.5vw;
+        background-color: var(--mainColorW);
+        border-radius: 10px;
+        height: 0.5vw;
+    }
+    ::-webkit-scrollbar-thumb {
+        background: var(--mainColorYellow1);
+        border-radius: 10px;
+        transition: all 300ms ease-in-out;
+    }
+}
+
+:root{
+    --mainColor: #101010;
+    --mainColorW: #666666;
+    --mainColorYellow1: #c4b86e;
+    --mainColorYellow2: #8b865a;
+    --mainColorYellow3: #807500;
+    --btnColor: #292929;
+    --btnColorB: #1b1b1b;
+    --btnColorGradiant:linear-gradient(270deg, #000000 -32.46%, #5c5c5c 50%);
+    --svgColor: #c7c7c7;
+    --borderReduseBtnDif:0.5vw;
+    --mainColorWW: #bebebe;
+    --mainColorWWW: #f3f3f3;
+    --bgTColorOpacity: #2928286e;
+}
+
+html {  
+    transform-origin: center center; /* افزایش زوم از وسط صفحه */  
+    font-size: 16px;
+    
+}
+
+svg{
+    display: block;
+    fill: var(--svgColor);
+    width: 100%;
+    height: 100%;
+}
+ul{
+    list-style: none;
+}
+img{
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    transform: scale(1);    
+}
+button{
+    user-select: none;
+    border: none;
+    outline: none;
+}
+a{
+    user-select: none;
+    text-decoration: none;
+    color:var(--mainColorWWW)
+
+}
+
+
+body{
+    font-family: 'AUGUSTUS';
+    background-color:var(--mainColor); 
+    /* background-image:linear-gradient(900deg, var(--mainColor)  , var(--mainColorW) 70%) */
+    width: 95%;
+    margin: auto;
+    overflow-x: hidden;
+    transition: all 300ms ease;
+}
+
+
+body::-webkit-scrollbar {
+    width: 0.5vw;
+    background-color: var(--mainColorW);
+    border-radius: 10px;
+    height: 0.5vw;
+}
+
+/* قسمت ثابت */
+body::-webkit-scrollbar-track {
+    border-radius: 1vw;
+}
+
+/* قسمت متحرک */
+body::-webkit-scrollbar-thumb {
+    background: var(--mainColorYellow1);
+    border-radius: 10px;
+    transition: all 300ms ease-in-out;
+    -webkit-transition: all 300ms ease-in-out;
+    -moz-transition: all 300ms ease-in-out;
+    -ms-transition: all 300ms ease-in-out;
+    -o-transition: all 300ms ease-in-out;
+}
+
+
+
+header{
+    /* width: 90%; */
+    margin: auto;
+    padding: 1vw;
+    
+}
+
+
+.btn_dif{
+    cursor: pointer;
+    width: 50px;
+    height: 50px;
+    border-radius: var(--borderReduseBtnDif);
+    padding:0.5vw;
+    background-image: linear-gradient(-90deg, var(--mainColor)  , var(--mainColorWWW) 70%);
+    border: none;
+    z-index: 5;
+    position: relative;
+        &::before{
+         border-radius: var(--borderReduseBtnDif);
+            content: '';
+            display: block;
+            width: 98%;
+            height: 94%;
+            background-color: var(--btnColor);
+            position: absolute;
+            z-index: 1;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50% , -50%);
+        }
+        &>p{
+            position: relative;
+            z-index: 2;    
+        }
+        svg{
+            transition: all 300ms ease;
+            position: relative;
+            z-index: 2;
+        }
+}

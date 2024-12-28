@@ -1,0 +1,596 @@
+/* 
+.outer {
+  border: 10px solid;
+  border-image-source: linear-gradient(270deg, #000000 -32.46%, #666666 50%);
+  border-image-slice: 1;
+  border-radius: 20px; 
+}
+
+.inner {
+  background: linear-gradient(270deg, #000000 -32.46%, #666666 50%);
+  border-radius: 20px; 
+  width: 100%;
+  height: 100%;
+} */
+
+
+
+
+
+
+
+
+.nav{
+    height: 3vw;
+    gap: 10%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* flex-direction: row; */
+    padding: 2vw;
+    padding-bottom: 3vw;
+    /* border: 0.1vw solid var(--mainColorW); */
+    border-top: none;
+    border-bottom: none;
+    /* box-shadow: 0vw 1vw 8vw 0.01vw var(--mainColorW) , inset 0vw -0.8vw 5vw 0.0001vw rgba(110, 110, 110, 0.425); */
+    border-radius: 100vw;
+}
+
+
+
+
+.nav_LeftSide{
+    align-items: center;
+    display: grid;
+    justify-content: space-between;
+    width: 24%;
+    gap: 3%;
+    grid-template-columns: 4.5fr 1fr 1fr 1fr;
+
+    button{
+        height:  clamp(0.1rem,2.5vw,50rem);
+        width: auto;
+    }
+    
+}
+
+
+
+/*  اینجا دوبار یک انیمیشنو ساختم تا یکبار برای رفت و یکبار برای برگشت استفاده کنم */ 
+
+@keyframes FkeyframeNavBtn_durkxLiteMode {
+    0%{
+        transform: translate(-50% , -50%) rotate(0deg) scale(1);
+    }
+    100%{
+        transform: translate(-50% , -50%) rotate(1800deg) scale(0);
+    }
+}
+
+@keyframes FkeyframeNavBtn_durkxLiteMode2 {
+    0%{
+        transform: translate(-50% , -50%) rotate(0deg) scale(1);
+    }
+    100%{
+        transform: translate(-50% , -50%) rotate(1800deg) scale(0);
+    }
+}
+
+
+
+
+.navBtn_durkxLiteMode{
+    transition: all 1s ease;
+    svg{
+        user-select: none;
+        pointer-events: none;
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        width: 65%;
+        transform:  translate(-50% , -50%);
+        transition: all 300ms ease-in-out;
+    }
+}
+.navBtn_durkMode{
+    & > svg:first-child{
+        /* animation: ''; */
+        /* transform: translate(-50% , -50%) scale(0); */
+        /* animation: FkeyframeNavBtn_durkxLiteMode 1s ease-in-out 1 alternate; */
+        animation: FkeyframeNavBtn_durkxLiteMode2 0.5s ease-in-out 1 alternate forwards;
+        position: absolute;
+    }
+    & > svg:last-child{
+        /* animation: FkeyframeNavBtn_durkxLiteMode 1s ease-in-out 2 alternate-reverse forwards; */
+        /* animation: none; */
+        position: absolute;
+        /* transform: translate(-50% , -50%) scale(1); */
+        /* animation: ''; */
+        animation: FkeyframeNavBtn_durkxLiteMode2 0.5s ease-in-out 1 reverse forwards;
+    }
+}
+.navBtn_liteMode{
+    & > svg:first-child{
+        /* animation: ''; */
+        animation: FkeyframeNavBtn_durkxLiteMode 0.5s ease-in-out 1 reverse forwards;
+        position: absolute;
+        
+    }
+    & > svg:last-child{
+        /* animation: ''; */
+        position: absolute;
+        /* transform: scale(0); */
+        animation: FkeyframeNavBtn_durkxLiteMode 0.5s ease-in-out 1 alternate forwards;
+        /* animation: name duration timing-function delay iteration-count direction fill-mode; */
+    }
+}
+
+
+.nav_RightSide{
+    justify-content: end;
+   width: 60%;
+   display: flex;
+   gap: 6vw;
+   align-items: center;
+   & > ul{
+       & > .nav_RightSideUl__P{
+           display: none;       
+      }
+    width: 80%;
+    position: relative;
+        display: flex;
+        justify-content: space-between;
+        /* font-size: 1.4rem; */
+    font-size: clamp(0.1rem,1.3vw,2rem);  
+        span{
+            display: block;
+            position: absolute;
+            background-color: var(--svgColor);
+            height: 0.1vw;
+            width:  clamp(0.1rem,3.5vw,10rem);
+            left: 99.9%;
+            top: 100%;
+            border-radius: 10000rem;
+            transform: translate(-80% , -50%);
+            transition: all 600ms ease-in-out;
+        box-shadow: 0 0 0.3rem 0.00005rem var(--svgColor);
+
+        }
+
+        &>:nth-child(1):hover ~ #NavSpanElmMover{
+            transform: translate(-10% , 0%);
+            left: 0;
+            width:  clamp(0.1rem,6.5vw,10rem);
+        background-color: var(--mainColorYellow3);
+        box-shadow: 0 0 0.3rem 0.00005rem var(--mainColorYellow3);
+    }
+    &>:nth-child(2):hover ~ #NavSpanElmMover{
+        transform: translate(-12% , -50%);
+        left: 33%;
+        width: clamp(0.1rem,5.5vw,9rem);
+        background-color: var(--mainColorYellow2);
+        box-shadow: 0 0 0.3rem 0.00005rem var(--mainColorYellow2);
+        }
+        &>:nth-child(3):hover ~ #NavSpanElmMover{
+            right: auto;
+        transform: translate(-25% , -50%);
+            left: 66%;
+            /* right: 50%; */
+            width: clamp(0.2rem,6vw,10rem); 
+            background-color: var(--mainColorYellow1);
+        box-shadow: 0 0 0.3rem 0.00005rem var(--mainColorYellow1);
+        }
+    }
+
+    .nav_btns{
+        position: relative;
+        height: 7vw;
+        width: 13%;
+        & img{
+            position:absolute ;
+            z-index: 2;
+            left: 0%;
+            top: 10%;
+        }
+    }
+}
+
+
+.nav_btnByProduct{
+    &::before{
+        width: 94%;
+    }
+}
+
+
+.searchBox_parent{
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    z-index: 20;
+    transition: all 200ms;
+    left: 0;
+    top: 0;
+    background: #00000060;
+    backdrop-filter: blur(1vw);
+    & > div {
+        transition: all 200ms;
+        transform: translate(-50%,-50%);
+        top: 50%;
+        left: 50%;
+        width: 25%;
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+}
+
+.searchBox_parent__hidde{
+    backdrop-filter: none;
+    position: static;
+    background: none;
+    width: 100%;
+    height: 100%;
+    z-index: 10;
+    & > div {
+        width: 100%;
+        height: 100%;
+    
+        & > #navBtnSearch{
+    padding: 0.6vw;
+
+    border-radius: 0.5vw;
+    &::before{
+        border-radius: 0.5vw;
+    }
+
+        }
+    }
+
+}
+
+#navBtnSearch{
+    transition: all 200ms;
+    padding: 1vw;
+    position: absolute;
+    height: 100%;
+    border-radius: 2vw;
+    &::before{
+        border-radius: 2vw;
+        transition: all 200ms;
+    }
+}
+
+#inputSearchBox{
+    transition: all 200ms;
+    padding: 0.8vw 1vw 0.5vw 4vw;
+    font-size: 1.8vw;
+    border: none;
+    outline: none;
+    width: 100%;
+    border-radius:4vw;
+    text-align: right; 
+    direction: rtl;
+    caret-color: var(--mainColorWW);
+    font-family: 'Peyda';
+    height: 100%;
+
+}
+
+
+
+.regesterBtn{
+    width: 100%;
+    color: var(--mainColorWWW);
+    font-size: clamp(0.1rem,0.8vw,2rem);  
+    text-wrap: nowrap;
+    padding:0.2vw;
+
+    p {
+        display: flex;
+        justify-content: center;
+        gap: 0.7vw ;
+        /* text-align: center; */
+    top: -20%;
+        align-items: center;
+     span:nth-child(2){
+        color: var(--mainColorWW);
+        padding-top: 0.2vw;
+    font-size: clamp(0.1rem,1.8vw,4rem);  
+      }
+      svg{
+        /* height: 100%; */
+        width: clamp(0.5vw,0.99vw,18rem);
+        fill: var(--mainColorWWW);
+      }
+    }
+
+}
+
+
+.CnavBTnHambergery{
+
+    cursor: pointer;
+    position: relative;
+    user-select: none;
+    width: 3.4vw;
+    height: 3.4vw;
+    top:0.5vw;
+    display: none;
+    transform: scale(0,0);    
+    transition: all 300ms ease;
+    span{
+        left:0%;
+        top: 0%;
+        position: absolute;
+    width: 3.3vw;
+    height: 0.3vw;
+    background-color: var(--mainColorWW);
+    transition: all 0.3s ease-in-out;
+    border-radius: 1vw;
+    }
+
+    & span:nth-child(1){
+        top: 5%;
+    }
+    & span:nth-child(2){
+        top: 35%;
+    }
+    & span:nth-child(3){
+        top: 65%;
+    }
+    & ~ ul{
+        transition: all 300ms ease;
+        /* display: none; */
+    }
+}
+
+
+
+.nav_RightSideli{
+    svg{
+
+        display: none;
+    }
+    
+}
+
+
+
+
+
+
+
+
+
+
+    @media all and (max-width:800px) {
+        /* background-color: #ff0000; */
+
+        
+
+.nav{
+    margin-top: 3vw;
+}
+
+.nav_RightSideli{
+    padding: 1vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* margin-left: 20%; */
+    /* gap:  clamp(1rem, 1.3vw, 2rem); */
+    transition: all 300ms;
+    &:hover{
+        background-color: var(--mainColorWWW);
+       a,svg{
+        color: var(--mainColor);
+        fill: var(--mainColor);
+    }
+    }
+    svg{
+        width: 5vw;
+        height:5vw;
+        justify-items: left;
+        display: block;
+    transition: all 300ms;
+    }
+    a{
+    transition: all 300ms;
+        width:  20vw;
+        text-align: center;
+    }
+
+}
+
+.navBTnHambergery_children{
+    
+    
+
+        & span:nth-child(1){
+            top: 40%;
+            transform: rotate(45deg);
+        }
+        & span:nth-child(2){
+            transform: rotate(-45deg);
+            top: 40%;
+        }
+        & span:nth-child(3){
+            transform: rotatez(-360deg) scale(0);
+            /* width: 4vw; */
+            top: 30%;
+            left: 0%;
+        }
+    
+}
+
+.CnavBTnHambergery{
+
+    cursor: pointer;
+    position: relative;
+    user-select: none;
+    width: 9vw;
+    display: block;
+    transform: scale(1,1);    
+    transition: all 300ms ease;
+    height: 7vw;
+
+    & > span{
+        width: 8vw;
+        height: 0.8vw;
+    }
+
+    & ~ ul{
+        
+        overflow: auto;
+        transform: scaleY(1) translateX(0%);
+        flex-direction: column;
+        /* display: none; */
+                transform: translateX(-150%) scale(1) ;
+        padding-top: 1%;
+        width: 40%;
+        background-color: #ffffff13;
+        backdrop-filter: blur(1vw);
+        text-align: center; 
+        position: fixed;
+        justify-content: start;
+        left: 0%;
+        top: 0;
+        z-index: 11;
+        gap: 1%;
+        height: 100%;
+
+        & li:nth-child(1){
+            order: 4;
+        }
+        & li:nth-child(2){
+            order: 3;
+        }
+        & li:nth-child(3){
+            order: 2;
+        }
+        & li:nth-child(4){
+            order: 1;
+        }
+
+        span{
+            display: none;
+        }
+    }
+
+}
+
+
+.nav_RightSide{
+    gap: 0vw;
+    width: 30%;
+    
+    
+    & > ul{
+            & > .nav_RightSideUl__P{
+                font-weight: bold;
+                  display: block;       
+                  color: var(--mainColorWWW);
+                  font-size: 5vw;
+                  margin: 3vw auto;
+             }
+/* font-size: clamp(1rem,1.3vw,2rem);   */
+font-size: 3.8vw;
+
+            #NavSpanElmMover{
+
+
+            }
+        }
+        .nav_btns {
+            height: 14vw;
+            width: 70%;
+        }
+    
+    
+    }
+
+
+
+.nav_LeftSide{
+    width: 70%;
+    gap: 3%;
+    grid-template-columns: 4fr 1fr 1fr 1fr;
+
+    button{
+        padding: 1vw;
+        height: 8vw;
+        /* height:  clamp(1.1rem,2.5vw,50rem); */
+        width: auto;
+    }
+    
+}
+
+
+
+.regesterBtn{
+    /* width: 100%; */
+    /* color: var(--mainColorWWW); */
+    font-size: clamp(2vw,2.8vw,2rem);  
+    /* text-wrap: nowrap; */
+    /* padding:0.2vw; */
+
+    p {
+        /* display: flex; */
+        /* justify-content: center; */
+        /* gap: 0.7vw ; */
+        /* text-align: center; */
+    top: 0%;
+        /* align-items: center; */
+     span:nth-child(2){
+        /* color: var(--mainColorWW); */
+        /* padding-top: 0.2vw; */
+    font-size: clamp(1vw,2.8vw,4rem);  
+      }
+      svg{
+        /* height: 100%; */
+        width: clamp(0.5vw,2.9vw,18rem);
+        fill: var(--mainColorWWW);
+      }
+    }
+
+}
+
+
+
+.searchBox_parent{
+
+    & > div {
+        width: 75%;
+        height: 6vw;
+        border-radius: 100vw;
+    }
+    #navBtnSearch{
+        padding: 1.9vw;
+        border-radius: 125vw;
+        &::before{
+            border-radius: 125vw;
+
+        }
+    }
+}
+#inputSearchBox{
+    font-size: 3.8vw;
+    border-radius: 125vw;
+}
+
+
+.searchBox_parent__hidde{
+    & > div {
+        width: 100%;
+        height: 100%;
+    }
+}
+
+    }
+/* 
+@keyframes identifier {
+    
+} */
