@@ -3,8 +3,16 @@
     src: url('../fonts/Peyda/Peyda-ExtraBold.ttf');
 }
 @font-face {
+    font-family:'PeydaL' ;
+    src: url('../fonts/Peyda/peyda-light.ttf');
+}
+@font-face {
     font-family:'AUGUSTUS' ;
     src: url('../fonts/YekanBakhVariableR/TTF/YekanBakh-Light.ttf');
+}
+@font-face {
+    font-family:'Growth' ;
+    src: url('../fonts/Growth/Growth.otf');
 }
 
 *,*::after,*::before{
@@ -45,7 +53,55 @@
     --mainColorWW: #bebebe;
     --mainColorWWW: #f3f3f3;
     --bgTColorOpacity: #2928286e;
+    --colorBlue1: #00aeff;
+    --colorBlue2: #001aff;
 }
+
+/* input:-webkit-autofill {
+     -webkit-box-shadow: 0 0 0 1000px yellow inset;
+     -webkit-text-fill-color: blue; 
+
+        -webkit-box-shadow: 0 0 0 1000px transparent inset;
+        -webkit-text-fill-color: inherit;
+    
+    font-size: 2vw;
+} */
+/* input:-webkit-autofill {
+    -webkit-box-shadow: 0 0 0px 1000px white inset !important;
+    -webkit-text-fill-color: black !important;
+}
+
+input:-webkit-autofill:focus {
+    -webkit-box-shadow: 0 0 0px 1000px white inset !important;
+    -webkit-text-fill-color: black !important;
+}
+
+input:-webkit-autofill:hover {
+    -webkit-box-shadow: 0 0 0px 1000px white inset !important;
+    -webkit-text-fill-color: black !important;
+}
+
+input:-webkit-autofill:active {
+    -webkit-box-shadow: 0 0 0px 1000px white inset !important;
+    -webkit-text-fill-color: black !important;
+} */
+/* 
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+    -webkit-transition: background-color 5000s ease-in-out 0s;
+    transition: background-color 5000s ease-in-out 0s;
+} */
+
+input:-webkit-autofill {
+    -webkit-box-shadow: 0 0 0 300px var(--mainColor) inset !important; /* رنگ پس‌زمینه را تغییر دهید */
+    -webkit-text-fill-color: var(--mainColorWWW) !important; /* رنگ متن را تغییر دهید */
+    /* box-shadow: 0 0 0 30px var(--mainColor) inset !important; برای سایر مرورگرها */
+    text-fill-color: var(--mainColor) !important;
+}
+
+
 
 html {  
     transform-origin: center center; /* افزایش زوم از وسط صفحه */  

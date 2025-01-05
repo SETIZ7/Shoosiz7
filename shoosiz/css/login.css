@@ -1,0 +1,648 @@
+
+body {
+    font-family:'Growth';
+    color: var(--mainColorWWW);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    /* overflow: hidden; */
+    width: 100%;
+}
+
+.section_mine {
+    display: flex;
+    background-color: var(--mainColor);
+    border-radius: 12px;
+    /* overflow: hidden; */
+    /* box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5); */
+    width: 90%;
+    /* max-width: 100%; */
+    gap: 2vw;
+    height: 90vh;
+}
+
+/* Slider Section */
+.section_mine__L{
+  box-shadow: 0 0 0.5vw var(--mainColorWWW);
+  border: var(--mainColorWWW) solid 0.1vw;
+    position: relative;
+    width: 52%;
+    height: clamp(10px,90vh,60vw);
+    overflow: hidden;
+    border-radius: 2vw;
+    background-color: var(--btnColor);
+
+    h1{
+    font-family:'Growth';
+      position: absolute;
+      left: 50%;
+      top: 45%;
+      /* font-size: 80vh; */
+      font-size: clamp(10px , 40vw + 1vh , 80vh);
+      transform: translate(-50% , -50%) scaleY(1.2);
+      letter-spacing: -0.3vw;
+      font-weight: 100;
+      /* height: 100vh; */
+    }
+
+}
+
+
+.slides {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    transition: transform 2.8s ease-in-out;
+    will-change:transform;
+    height: 100%;
+    width: 90%;
+    margin: auto;
+}
+
+.slide {
+    flex: 0 0 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    -webkit-user-drag: none;
+    user-select: none;
+
+}
+
+.slide img {
+  object-fit: contain;
+    width: clamp(0px,28vw,90vw);
+    height: clamp(0px,60vh,60vw);
+    -webkit-user-drag: none;
+    user-select: none;
+    pointer-events: none;
+  filter: drop-shadow(-2vw 1vw 1vw #0009 );
+  /* transform:rotateZ(45deg) scaleX(1); */
+  margin:auto;
+}
+
+.navigation {
+    position: absolute;
+    bottom: 1vw;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 1vh;
+    z-index: 4;
+}
+
+/* دکمه‌های ناوبری */
+.navigation button {
+width: 4vw;
+height: 0.3vw;
+border: none;
+border-radius: 1vw;
+background: rgba(255, 255, 255, 0.6);
+cursor: pointer;
+transition: all 0.3s;
+}
+
+.navigation button.active {
+background: #fff;
+}
+
+/* دکمه‌ها و اسلایدر */
+
+
+
+.svgStar{
+    position: absolute;
+    left: clamp(1%,0.5vw + 70%,80%);
+    top: clamp(1%,0.5vw + 3%,20%);
+    width: clamp(0px,3vw,90vw);
+    transition: all 500ms;
+    animation: rotate 25s 4s ease-in-out infinite;
+
+    svg{
+    fill: var(--mainColorWWW);
+
+    }
+
+}
+
+
+.svgStarParent2{
+    left: clamp(1%,2.5vw + 85%,90%);
+    top: clamp(1%,2.5vw + 20%,40%);
+    width: clamp(0px,2vw,90vw);
+  animation: rotate 15s 2s ease-in-out infinite;
+
+}
+.svgStarParent3{
+    left: clamp(1%,1.5vw + 90%,95%);
+    top: clamp(1%,2.5vw + 35%,50%);
+    width: clamp(0px,1.2vw,90vw);
+  animation: rotate 10s ease-in-out infinite;
+
+}
+
+
+
+
+@keyframes rotate {
+    from {
+      transform: rotate(270deg);
+    }
+    30%{
+      transform: rotate(360deg);
+    }
+    98%{
+  
+        transform: rotate(-90deg);
+      }
+      
+      to {
+        transform: rotate(-90deg);
+    }
+  }
+
+
+
+
+              
+/*  اینجا دوبار یک انیمیشنو ساختم تا یکبار برای رفت و یکبار برای برگشت استفاده کنم */ 
+
+@keyframes FkeyframeNavBtn_durkxLiteMode {
+  0%{
+      transform: translate(-50% , -50%) rotate(0deg) scale(1);
+  }
+  100%{
+      transform: translate(-50% , -50%) rotate(1800deg) scale(0);
+  }
+}
+
+@keyframes FkeyframeNavBtn_durkxLiteMode2 {
+  0%{
+      transform: translate(-50% , -50%) rotate(0deg) scale(1);
+  }
+  100%{
+      transform: translate(-50% , -50%) rotate(1800deg) scale(0);
+  }
+}
+
+
+
+
+
+  
+
+
+
+        /* Login Form Section */
+        .section_mine__R {
+            padding: 0.5% 2%;
+            width: 50%;
+            direction: rtl;
+            /* display: flex; */
+            /* flex-direction: column; */
+            /* justify-content: center; */
+
+            & .password_form div{
+
+              cursor: pointer;
+              
+
+
+  transition: all 1s ease;
+  svg{
+      user-select: none;
+      pointer-events: none;
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      width: 100%;
+      transform:  translate(-50% , -50%);
+      transition: all 300ms ease-in-out;
+  }
+}
+.password_formOff div:first-child{
+  & > svg:first-child{
+      animation: FkeyframeNavBtn_durkxLiteMode2 0.5s ease-in-out 1 alternate forwards;
+      /* position: absolute; */
+  }
+  & > svg:last-child{
+      /* position: absolute; */
+      animation: FkeyframeNavBtn_durkxLiteMode2 0.5s ease-in-out 1 reverse forwards;
+  }
+}
+.password_formOn div:first-child{
+  & > svg:first-child{
+      animation: FkeyframeNavBtn_durkxLiteMode 0.5s ease-in-out 1 reverse forwards;
+      /* position: absolute; */
+      
+  }
+  & > svg:last-child{
+      /* position: absolute; */
+      animation: FkeyframeNavBtn_durkxLiteMode 0.5s ease-in-out 1 alternate forwards;
+  }
+
+
+
+
+              
+            }
+        }
+
+
+        /* .form_toggle {} */
+
+        .form_toggleColorBg{
+          position: relative;
+          display: flex;
+          justify-content: center;
+          border-radius: var(--borderReduseBtnDif);
+  background-image: linear-gradient(-90deg, var(--mainColor)  , var(--mainColorWWW) 70%);
+  width: 100%;
+  height: clamp(0px , 3vw + 3vh , 10vw);
+  align-items: center;
+  margin: auto;
+  transition: all 500ms;
+  /* margin-bottom: 5vw; */
+
+  &::before{
+       border-radius: var(--borderReduseBtnDif);
+          content: '';
+          display: block;
+          width: 99.5%;
+          height: 94%;
+          background-color: var(--btnColor);
+          position: absolute;
+          z-index: 1;
+          left: 50%;
+          top: 50%;
+          transform: translate(-50% , -50%);
+      }
+      & > *{
+        position: relative;
+        z-index: 3;
+      }
+        }
+
+
+
+        .form_toggleBGMover{
+          position: absolute;
+          z-index: 2;
+          background: var(--mainColorWWW);
+          height: 100%;
+          width: 50%;
+          transition: all 300ms ease-in-out;
+          left: 50%;
+         border-radius: var(--borderReduseBtnDif);
+          pointer-events: none;
+        }
+
+        .form_toggle button {
+          height: 100%;
+          width: 100%;
+            background: none;
+            border: none;
+            color: var(--mainColorWWW);
+            font-size: clamp(6px , 1.5vw + 1.5vh , 10vw);
+            cursor: pointer;
+            /* padding: 10px 20px; */
+            transition: all 0.3s;
+            font-family: 'Peyda';
+
+            &:hover{
+              color: var(--btnColorB);
+            }
+
+            &.active{
+            color: var(--btnColorB);
+            }
+        }
+
+
+        .form_group {
+          transition: all 0.5s ;
+            position: relative;
+            margin: 2vw 0;
+            width: 100%;
+            height: 5vw;
+
+            .form_groupSvgBox{
+              position: absolute;
+          height: 3vw;
+          width: 3vw;
+          top: 50%;
+          left: 0.7vw;
+          transform: translateY(-50%);
+          z-index: 3;
+            }
+        }
+
+        .form_group input {
+          height: 100%;
+            width: 100%;
+            padding: 1vw;
+            font-size: 1.8vw;
+          font-family: 'PeydaL';
+          font-weight: 900;
+            border: 0.1vw solid #ff000000;
+            border-radius: 0.5vw;
+            background: linear-gradient(120deg, var(--btnColor) -10%, var(--btnColorB));
+            color: var(--mainColorWWW);
+          position: absolute;
+            outline: none;
+          transition: all 300ms ease-in-out;
+
+            /*
+            اینجا میتونی یک افتر بزنی بعد 
+          backdrop-filter: blur(0.2vw);
+                بزنی روش  و بعدم بجای تغییر اینپوت به تکست و پسورد اون رو بلر کنی
+            */
+        }
+        .password_form{
+          
+                      &::after{
+                       border-radius: 0.5vw;
+                        content: '';
+                        display: block;
+                        position: absolute;
+                        width: 100%;
+                        height: 100%;
+                        background: rgba(255, 0, 0, 0);
+                        backdrop-filter: blur(clamp(6px , 0.5vw + 0.5vh , 10vw));
+                        left: 0%;
+                        z-index: 2;
+                        pointer-events: none;
+                        transition: all 1s ease-in-out;
+                        /* margin: 100vw; */
+                      }
+        }
+        .password_formOn{
+          &::after{
+          backdrop-filter: blur(0);
+          }
+        }
+
+        .form_group svg {
+          width: 100%;
+          height: 100%;
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            object-fit: cover;
+        }
+
+        .form_groupSignin_content{
+          transition: all 500ms ease-in-out;
+          input{
+            width: 49%;
+          }
+          & input:last-child{
+            left: 0;
+          }
+        }
+
+        .form_groupSignin_contentHide{
+          height: 0vw;
+          transform: rotateY(360deg) scale(0);
+          margin: 0;
+        }
+
+        /* .checkbox_group {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .checkbox_group input {
+            margin-right: 10px;
+            background-color: #000;
+            color: #000;
+            width: 100px;
+            height: 100px;
+            
+        } */
+
+        
+        .checkbox_group {
+          transition: all 0.5s ;
+          display: flex;
+          align-items: center;
+          cursor: pointer;
+          padding-right: 1.8vw;
+          margin: 2vw 0;
+        }
+        
+        .custom_checkbox {
+          display: inline-block;
+          position: relative;
+          padding-right: 1vw;
+          font-size: 1.4vw;
+          user-select: none;
+          cursor: pointer;
+        }
+        
+        .checkbox_group input {
+          position: absolute;
+          opacity: 0;
+          cursor: pointer;
+          height: 0;
+          width: 0;
+        }
+        
+        .checkmark {
+          position: absolute;
+          top: 50%;
+          left: 100%;
+          height: 1.5vw;
+          width: 1.5vw;
+          /* background-color: #ccc; */
+          border-radius: var(--borderReduseBtnDif);
+          border: solid var(--mainColorWWW);
+          transform: translateY(-50%);
+        }
+        
+        .checkmark:after {
+          content: "";
+          position: absolute;
+          left: 50%;
+          top: 50%;
+          width: 0.4vw;
+          height: 1vw;
+          border: solid var(--mainColorWWW);
+          border-width: 0 0.2vw 0.2vw 0;
+          transform: rotate(45deg) translate(-140% , -30%) scale(0);
+          transition: all 100ms ease-in-out;
+        }
+        
+        .checkbox_group input:checked + .custom_checkbox .checkmark:after {
+          transform: rotate(45deg) translate(-140% , -30%) scale(1);
+
+        }
+        
+        
+
+
+
+        .btn_loginSingin {
+          height: 5vw;
+            width: 100%;
+            padding: 0;
+            font-size: 2vw;
+            margin: 1vw 0;
+            color: var(--mainColorWWW);
+            /* border-image: linear-gradient(-90deg, var(--mainColor)  , var(--mainColorWWW) 70%);
+            border-width: 2px;
+            border-style: solid;
+            border-image-slice: 1;
+            border-image-repeat: round; */
+            border-radius: var(--borderReduseBtnDif);
+            cursor: pointer;
+            transition: all 0.3s;
+        &::before{
+          width: 99.5%;
+          background-image: linear-gradient(90deg, var(--mainColor)  , var(--btnColorB) 70%);
+        }
+
+      }
+
+        .form_footer {
+            display: flex;
+            justify-content: space-between;
+            font-size: 1.2vw;
+            margin-top: 1vw;
+            transition: all 300ms ease-in-out;
+        }
+
+        .form_footer span {
+
+
+          font-weight: 900;
+            text-decoration: none;
+            transition: color 0.3s;
+            color: var(--mainColorWWW);
+
+            a{
+            transition: color 0.3s;
+          color: var(--colorBlue1);
+            }
+
+        }
+
+        .form_footer :hover a {
+          color: var(--colorBlue2);
+        }
+
+        @keyframes move-bg {
+            0% {
+                transform: translateX(-100%);
+            }
+            100% {
+                transform: translateX(100%);
+            }
+        }
+
+
+
+
+
+        .unRemember_BackToLogin{
+          transition: all 0.5s ;
+          display: flex;
+          align-items: center;
+          justify-content: right;
+          gap: clamp(10px , 2vw + 2vh , 4vw);
+          row-gap:  clamp(10px , 3vw + 3vh , 8vw);
+          /* height: 5%; */
+          flex-wrap: wrap;
+          h3{
+            font-family: 'Peyda';
+            font-size:clamp(10px , 1vw + 1vh , 3vw) ;
+          }
+          h2{
+            font-family: 'Peyda';
+            font-size:clamp(10px , 2vw + 2vh , 4vw) ;
+            width: 70%;
+          }
+          div{
+            /* width: auto; */
+            height: clamp(10px , 2vw + 2vh , 4vw);
+            cursor: pointer;
+          }
+          svg{
+            width: 100%;
+            height: 100%;
+            fill: var(--svgColor);
+            pointer-events: none;
+          }
+        }
+
+
+
+        .emailCodebox_parent{
+          /* height: clamp(10px , 2vw + 20vh , 80vw); */
+          p{
+            font-family: 'PeydaL';
+            font-size:clamp(1px , 1.2vw + 1.2vh , 3vw) ;
+            margin-bottom: clamp(10px , 1.5vw + 1.5vh , 15vw);
+          }
+          .inputbox_emailCode{
+            direction: ltr;
+            width: 100%;
+            height: 100% ;
+            display: flex;
+            justify-content: space-between;
+            gap: clamp(5px , 0.5vw + 0.5vh , 15vw);
+            .inputCodeEmail{
+              width: clamp(10px , 4.5vw + 4.5vh , 15vw);
+              height:clamp(10px , 4.5vw + 4.5vh , 15vw);
+              &::before{
+                width: 98%;
+                height: 97%;
+              }
+
+              input{
+                direction: ltr;
+            font-size:clamp(1px , 2.2vw + 2.2vh , 5vw) ;
+                color: var(--mainColorWWW);
+                text-align: center;
+                width: 100%;
+                height: 100%;
+                background: none;
+                border: none;
+                outline: none;
+              }
+
+            }
+          }
+        }
+
+
+
+
+
+
+
+        .form_groupSignin_contentHide1{
+          height: 0vw;
+          transform: rotateY(0deg) scale(0) translateX(1000%);
+          margin: 0;
+        }
+        .form_groupSignin_contentHide2{
+          height: 0vw;
+          transform: rotateY(0deg) scaleX(0);
+          margin: 0;
+        }
+        .form_groupSignin_contentHide3{
+          height: 0vw;
+          transform:  scale(0) translateY(-1000%);
+          margin: 0;
+        }
+
+
+        /* 
+        
+        ایجاد کلاس های متفاوت مبنی بر انیمیشن های متفاوت
+
+        */
