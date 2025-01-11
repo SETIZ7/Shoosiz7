@@ -11,7 +11,8 @@ body {
 }
 
 .section_mine {
-    display: flex;
+  display: flex;
+  flex-direction: row-reverse;
     background-color: var(--mainColor);
     border-radius: 12px;
     /* overflow: hidden; */
@@ -24,6 +25,7 @@ body {
 
 /* Slider Section */
 .section_mine__L{
+          transition: all 0.8s ease-in-out;
   box-shadow: 0 0 0.5vw var(--mainColorWWW);
   border: var(--mainColorWWW) solid 0.1vw;
     position: relative;
@@ -197,9 +199,11 @@ background: #fff;
 
         /* Login Form Section */
         .section_mine__R {
+          transition: all 0.8s ease-in;
             padding: 0.5% 2%;
             width: 50%;
             direction: rtl;
+            transform: scale(1) translate(0);
             /* display: flex; */
             /* flex-direction: column; */
             /* justify-content: center; */
@@ -292,7 +296,7 @@ background: #fff;
           z-index: 2;
           background: var(--mainColorWWW);
           height: 100%;
-          width: 50%;
+          width: 50%; 
           transition: all 300ms ease-in-out;
           left: 50%;
          border-radius: var(--borderReduseBtnDif);
@@ -347,7 +351,7 @@ background: #fff;
           font-family: 'PeydaL';
           font-weight: 900;
             border: 0.1vw solid #ff000000;
-            border-radius: 0.5vw;
+            border-radius: var(--borderReduseBtnDif);
             background: linear-gradient(120deg, var(--btnColor) -10%, var(--btnColorB));
             color: var(--mainColorWWW);
           position: absolute;
@@ -363,7 +367,7 @@ background: #fff;
         .password_form{
           
                       &::after{
-                       border-radius: 0.5vw;
+                        border-radius: var(--borderReduseBtnDif);
                         content: '';
                         display: block;
                         position: absolute;
@@ -403,11 +407,6 @@ background: #fff;
           }
         }
 
-        .form_groupSignin_contentHide{
-          height: 0vw;
-          transform: rotateY(360deg) scale(0);
-          margin: 0;
-        }
 
         /* .checkbox_group {
             display: flex;
@@ -582,10 +581,11 @@ background: #fff;
 
         .emailCodebox_parent{
           /* height: clamp(10px , 2vw + 20vh , 80vw); */
+          margin: clamp(1px , 1.1vw + 1.1vh , 10vh) auto;
           p{
             font-family: 'PeydaL';
             font-size:clamp(1px , 1.2vw + 1.2vh , 3vw) ;
-            margin-bottom: clamp(10px , 1.5vw + 1.5vh , 15vw);
+            margin-bottom: clamp(10px , 1.1vw + 1.1vh , 15vw);
           }
           .inputbox_emailCode{
             direction: ltr;
@@ -619,30 +619,157 @@ background: #fff;
         }
 
 
-
-
-
-
-
-        .form_groupSignin_contentHide1{
-          height: 0vw;
-          transform: rotateY(0deg) scale(0) translateX(1000%);
-          margin: 0;
-        }
-        .form_groupSignin_contentHide2{
-          height: 0vw;
-          transform: rotateY(0deg) scaleX(0);
-          margin: 0;
-        }
-        .form_groupSignin_contentHide3{
-          height: 0vw;
-          transform:  scale(0) translateY(-1000%);
-          margin: 0;
-        }
-
-
         /* 
         
         ایجاد کلاس های متفاوت مبنی بر انیمیشن های متفاوت
 
         */
+
+
+
+
+
+
+
+    @media all and (max-width:800px) {
+
+      :root{
+        --borderReduseBtnDif:2vw
+      }
+      .form_toggle{
+  height: clamp(0px , 3.5vw + 3.5vh , 20vw);
+  margin: 4vw auto;
+
+      }
+    
+      .section_mine{
+        /* flex-direction: row-reverse; */
+        flex-wrap: wrap;
+        row-gap:  clamp(10px , 3vw + 3vh , 10vw);
+
+        align-content: flex-start;
+
+        /* height: auto; */
+        /* overflow:visible; */
+        & > div{
+          width: 100%;
+        }
+      }
+      .section_mine__L{
+        /* display: block; */
+        /* position: sticky; */
+        top: 0;
+        border-radius: var(--borderReduseBtnDif);
+        /* left: 0; */
+        h1{
+          font-size: clamp(10px, 60vw + 1vh, 80vh);
+        }
+      }
+      .slide img {
+        width: clamp(0px, 40vw, 90vw);
+      }
+      .section_mine__R{
+        /* display: block; */
+        /* position: static; */
+      }
+
+
+      .form_group {
+        transition: all 0.5s ;
+          position: relative;
+          margin: 2vw 0;
+          height: clamp(0px, 3.5vw + 3.5vh, 10vh);
+
+          .form_groupSvgBox{
+            position: absolute;
+            height: clamp(0px, 2vw + 2vh, 5vh);
+            width: clamp(0px, 2vw + 2vh, 5vh);
+        /* width: 6vw; */
+        top: 50%;
+        left: 3vw;
+        transform: translateY(-50%);
+        z-index: 3;
+          }
+          input{
+
+            font-size: clamp(6px, 1.5vw + 1.5vh, 10vw);
+          }
+      }
+    
+
+      .custom_checkbox{
+        font-size: clamp(6px, 1.1vw + 1.1vh, 10vw);
+        transform: translateX(-4%);
+        .checkmark{
+          border-radius: clamp(0px, 0.4vw + 0.4vh, 1.5vh);
+          height: clamp(0px, 1.5vw + 1.5vh, 10vh);
+          width: clamp(0px, 1.5vw + 1.5vh, 10vh);
+
+          &::after{
+            height: clamp(0px, 1vw + 1vh, 10vh);
+            width: clamp(0px, 0.4vw + 0.4vh, 10vh);
+
+          }
+        }
+      }
+
+
+      .btn_loginSingin{
+        height: clamp(0px, 4vw + 4vh, 10vh);
+        font-size: clamp(6px, 1.5vw + 1.5vh, 10vw);
+      }
+
+      
+
+
+
+      .form_footer {
+        font-size: clamp(6px, 1.5vw + 1.5vh, 10vw);
+        
+      }
+
+
+
+      .unRemember_BackToLogin{
+        gap: clamp(10px , 2vw + 2vh , 4vw);
+        row-gap:  clamp(10px , 3vw + 3vh , 8vw);
+        /* height: 5%; */
+        h3{
+          font-size:clamp(10px , 1.2vw + 1.2vh , 10vw) ;
+        }
+        h2{
+          font-size:clamp(10px , 2.1vw + 2.1vh , 10vw) ;
+        }
+        div{
+          /* width: auto; */
+          height: clamp(10px , 2vw + 2vh , 10vw);
+        }
+        svg{
+          width: 100%;
+          height: 100%;
+        }
+      }
+
+
+
+      /* .form_groupSignin_contentHide{
+        height: 0vw;
+        margin: 0;
+      }
+      .form_groupSignin_contentHide1{
+        height: 0vw;
+        transform: rotateY(0deg) scale(0) translateX(1000%);
+        margin: 0;
+      }
+      .form_groupSignin_contentHide2{
+        height: 0vw;
+        transform: rotateY(0deg) scaleX(0);
+        margin: 0;
+      }
+      .form_groupSignin_contentHide3{
+        height: 0vw;
+        transform:  scale(0) translateY(-1000%);
+        margin: 0;
+      } */
+
+    }

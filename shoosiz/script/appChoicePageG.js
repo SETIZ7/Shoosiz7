@@ -1,8 +1,11 @@
+// import  FfixTagLinkA  from './routerFind.js';
+// console.log(FfixTagLinkA);
+    
 
-let angle_imgBox=$.querySelectorAll('.angle_imgBox')
-,main_content__box=$.querySelector('.main_content__box')
-,move_imgCenterZoom=$.querySelector('.move_imgCenterZoom')
-
+let angle_imgBox=document.querySelectorAll('.angle_imgBox')
+,main_content__box=document.querySelector('.main_content__box')
+,move_imgCenterZoom=document.querySelector('.move_imgCenterZoom')
+,main_content__boxScale=1
 
 
 
@@ -11,8 +14,8 @@ let angle_imgBox=$.querySelectorAll('.angle_imgBox')
 
 
 
-let btn_iconSize=$.getElementsByClassName('btn_iconSize')
-,iconSizeBox=$.querySelector('.main_iconSize__box')
+let btn_iconSize=document.getElementsByClassName('btn_iconSize')
+,iconSizeBox=document.querySelector('.main_iconSize__box')
 ,lestElmNumber=null
 
 
@@ -172,7 +175,7 @@ function FfindNumberRundom(x=new Number(0),y=new Number(1)) {
 
 
 // start angle_imgBox 
-let imgElm=$.createElement('img')
+let imgElm=document.createElement('img')
 ,imgElmScale=3
 ,imgElmSize=15
 
@@ -296,8 +299,8 @@ main_content__box.addEventListener('mouseleave',(e)=>{
 
 
 
-let ModuleSectionPropertis = $.getElementById('ModuleSectionPropertis')
-, btnPropertisFooter = $.getElementById('btnPropertisFooter')
+let ModuleSectionPropertis = document.getElementById('ModuleSectionPropertis')
+, btnPropertisFooter = document.getElementById('btnPropertisFooter')
 
 
 
@@ -315,7 +318,7 @@ function FeventKeyEscModule(e) {
 
 function FModuleSectionPropertisClick(e) {
     if(e.target.id==='ModuleSectionPropertis'){
-    // $.body.className=null
+    // document.body.className=null
     ModuleSectionPropertis.style.transform=' translateX(-50%) scale(0)'
     ModuleSectionPropertis.style.opacity='0'
     // ModuleSectionPropertis.style.top='25%'
@@ -329,7 +332,7 @@ function FModuleSectionPropertisClick(e) {
 function FbtnPropertisFooterClick(e) {
     // console.log();
     // if(e.target.id==='ModuleSectionPropertis'){
-    // $.body.className=null
+    // document.body.className=null
     ModuleSectionPropertis.style.transform=' translateX(-50%) scale(1)'
     ModuleSectionPropertis.style.opacity='1'
     // ModuleSectionPropertis.style.top='25%'
@@ -346,12 +349,14 @@ btnPropertisFooter.addEventListener('click',FbtnPropertisFooterClick)
 
 
 
+setTimeout(()=>{
+
+    document.body.classList.remove('form_groupSignin_contentHideTUp')
+    
+},200)
 
 
-
-
-
-
+// FfixTagLinkA()
 
 
 

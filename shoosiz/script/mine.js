@@ -1,12 +1,13 @@
-const $=document;
 
 
 
+(function () {
+    
 
-let deg=-90
+let mydeg=-90
 ,animationId
 ,main_content__boxScale=1
-,btnDif=$.getElementsByClassName('btn_dif')
+,btnDif=document.getElementsByClassName('btn_dif')
 
 
 /*    animation grdiant  */
@@ -15,7 +16,7 @@ function FAnimationBtnBgStart(p,num,panimationId) {
     // cancelAnimationFrame(panimationId)
     // console.log(num);
     // cancelAnimationFrame(animationId)
-    // for (; deg >= 150; deg++) {
+    // for (; mydeg >= 150; mydeg++) {
     function Fanimation() {
         
         p.style.setProperty('background-image',`linear-gradient(${num}deg, var(--mainColor)  , var(--mainColorWWW) 70%)`)
@@ -35,7 +36,7 @@ function FAnimationBtnBgEnd(p,num,panimationId) {
 
     // cancelAnimationFrame(animationId)
     // p.onmouseenter=null
-    // for (; deg <= -90; deg--) {
+    // for (; mydeg <= -90; mydeg--) {
         function Fanimation() {
         
             p.style.setProperty('background-image',`linear-gradient(${num}deg, var(--mainColor)  , var(--mainColorWWW) 70%)`)
@@ -75,13 +76,13 @@ for (const styleSheet0cssR of document.styleSheets[0].cssRules) {
 
 
 
-// event  navBtnSearch = $.getAnimations('navBtnSearch')
+// event  navBtnSearch = document.getAnimations('navBtnSearch')
 
 
 
-let navBtnSearch = $.getElementById('navBtnSearch')
-, inputSearchBox = $.getElementById('inputSearchBox')
-,searchBox_parent = $.getElementsByClassName('searchBox_parent')[0]
+let navBtnSearch = document.getElementById('navBtnSearch')
+, inputSearchBox = document.getElementById('inputSearchBox')
+,searchBox_parent = document.getElementsByClassName('searchBox_parent')[0]
 
 navBtnSearch.addEventListener('click',(e)=>{
     if(inputSearchBox.hasAttribute('hidden')){
@@ -117,7 +118,7 @@ searchBox_parent.addEventListener('click',(e)=>{
  */
 
 
- let btnModeDurkLite = $.getElementsByClassName('navBtn_durkxLiteMode')[0]
+ let btnModeDurkLite = document.getElementsByClassName('navBtn_durkxLiteMode')[0]
  
  /*
  ,animationKeyFrimDurkMOde=[
@@ -133,33 +134,33 @@ searchBox_parent.addEventListener('click',(e)=>{
 function FsetPropertyRootColor(params) {
 
     if(params=='lite'){
-        $.documentElement.style.setProperty('--mainColorW','#111')
-        $.documentElement.style.setProperty('--btnColor','#bebebe')
-        $.documentElement.style.setProperty('--mainColor','#fcfcfc')
-        $.documentElement.style.setProperty('--svgColor','#101010')
-        $.documentElement.style.setProperty('--mainColorWW','#333333')
-        $.documentElement.style.setProperty('--mainColorWWW','#010')
-        $.documentElement.style.setProperty('--btnColorB','#f3f3f3')
-        $.documentElement.style.setProperty('--bgTColorOpacity','#dadada6e') 
-        $.documentElement.style.setProperty('--mainColorYellow1','#c4b86e')
-        $.documentElement.style.setProperty('--mainColorYellow2','#8b865a')
-        $.documentElement.style.setProperty('--mainColorYellow3','#807500') 
-        $.querySelector('.main_content__boxImg').style.setProperty('filter','brightness(0)')
+        document.documentElement.style.setProperty('--mainColorW','#111')
+        document.documentElement.style.setProperty('--btnColor','#bebebe')
+        document.documentElement.style.setProperty('--mainColor','#fcfcfc')
+        document.documentElement.style.setProperty('--svgColor','#101010')
+        document.documentElement.style.setProperty('--mainColorWW','#333333')
+        document.documentElement.style.setProperty('--mainColorWWW','#010')
+        document.documentElement.style.setProperty('--btnColorB','#f3f3f3')
+        document.documentElement.style.setProperty('--bgTColorOpacity','#dadada6e') 
+        document.documentElement.style.setProperty('--mainColorYellow1','#c4b86e')
+        document.documentElement.style.setProperty('--mainColorYellow2','#8b865a')
+        document.documentElement.style.setProperty('--mainColorYellow3','#807500') 
+        document.querySelector('.main_content__boxImg').style.setProperty('filter','brightness(0)')
     }
     else{
         
-        $.documentElement.style.setProperty('--mainColorW','#666666')
-        $.documentElement.style.setProperty('--btnColor','#292929')
-        $.documentElement.style.setProperty('--mainColor','#101010')
-        $.documentElement.style.setProperty('--svgColor','#c7c7c7')
-        $.documentElement.style.setProperty('--mainColorWW','#bebebe')
-        $.documentElement.style.setProperty('--mainColorWWW','#f3f3f3')
-        $.documentElement.style.setProperty('--btnColorB','#1b1b1b')
-        $.documentElement.style.setProperty('--bgTColorOpacity','#2928286e')
-        $.documentElement.style.setProperty('--mainColorYellow1','#fff9c6')
-        $.documentElement.style.setProperty('--mainColorYellow2','#fff6a7')
-        $.documentElement.style.setProperty('--mainColorYellow3','#fff597')
-        $.querySelector('.main_content__boxImg').style.setProperty('filter','brightness(1)')
+        document.documentElement.style.setProperty('--mainColorW','#666666')
+        document.documentElement.style.setProperty('--btnColor','#292929')
+        document.documentElement.style.setProperty('--mainColor','#101010')
+        document.documentElement.style.setProperty('--svgColor','#c7c7c7')
+        document.documentElement.style.setProperty('--mainColorWW','#bebebe')
+        document.documentElement.style.setProperty('--mainColorWWW','#f3f3f3')
+        document.documentElement.style.setProperty('--btnColorB','#1b1b1b')
+        document.documentElement.style.setProperty('--bgTColorOpacity','#2928286e')
+        document.documentElement.style.setProperty('--mainColorYellow1','#fff9c6')
+        document.documentElement.style.setProperty('--mainColorYellow2','#fff6a7')
+        document.documentElement.style.setProperty('--mainColorYellow3','#fff597')
+        document.querySelector('.main_content__boxImg').style.setProperty('filter','brightness(1)')
     }
 }
 
@@ -205,9 +206,9 @@ window.addEventListener('load',()=>{
 
 // navBTnHambergery event and handel
 
-let navBTnHambergery = $.getElementById('navBTnHambergery')
+let navBTnHambergery = document.getElementById('navBTnHambergery')
 ,flagNavBTnHambergery = true
-,nav_RightSideUl = $.getElementsByClassName('nav_RightSideUl')[0]
+,nav_RightSideUl = document.getElementsByClassName('nav_RightSideUl')[0]
 ,isMouseInNav_RightSideUl=false
 
 
@@ -274,3 +275,5 @@ window.addEventListener('resize',(e)=>{
 
     }
 })
+
+})()

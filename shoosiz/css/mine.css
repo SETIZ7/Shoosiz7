@@ -106,7 +106,8 @@ input:-webkit-autofill {
 html {  
     transform-origin: center center; /* افزایش زوم از وسط صفحه */  
     font-size: 16px;
-    
+        transform-origin: center center;
+      
 }
 
 svg{
@@ -119,6 +120,8 @@ ul{
     list-style: none;
 }
 img{
+    user-select: none;
+    -webkit-user-drag: none;
     width: 100%;
     height: 100%;
     object-fit: contain;
@@ -145,6 +148,8 @@ body{
     margin: auto;
     overflow-x: hidden;
     transition: all 300ms ease;
+    transform-origin: center center;
+
 }
 
 
@@ -214,3 +219,57 @@ header{
             z-index: 2;
         }
 }
+
+
+
+
+        
+.form_groupSignin_contentHide{
+    height: 0vw !important;
+    transform: rotateY(360deg) scale(0) !important;
+    margin: 0 !important;
+  }
+  .form_groupSignin_contentHide1{
+    height: 0vw !important;
+    transform: rotateY(0deg) scale(0) translateX(1000%) !important;
+    margin: 0 !important;
+  }
+  .form_groupSignin_contentHide2{
+    height: 0vw !important;
+    transform: rotateY(0deg) scaleX(0) !important;
+    margin: 0 !important;
+  }
+  .form_groupSignin_contentHide3{
+    height: 0vw !important;
+    transform:  scale(0) translateY(-1000%) !important;
+    margin: 0 !important;
+  }
+
+  .form_groupSignin_contentHideRCome{
+    height: 0vw !important;
+    transform:  scale(0) translate(1000rem , 0) !important;
+    margin: 0 !important;
+  }
+  .form_groupSignin_contentHideLCome{
+    height: 0vw !important;
+    transform:  scale(0) translateX(-1000rem) !important;
+    margin: 0 !important;
+  }
+  .form_groupSignin_contentHideTCome{
+    height: 0vw !important;
+    transform:  scale(0) translateY(-500rem) !important;
+    margin: 0 !important;
+  }
+  .form_groupSignin_contentHideBCome{
+      height: 0vw !important;
+      transform:  scale(0) translateY(500rem) !important;
+      margin: 0 !important;
+    }
+
+
+    .form_groupSignin_contentHideTUp{
+      height: 0vw !important;
+      transform:  scale(0) translateY(-200%) !important;
+      margin: 0 !important;
+    }
+

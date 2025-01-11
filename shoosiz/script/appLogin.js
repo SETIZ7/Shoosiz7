@@ -6,6 +6,9 @@ let isDragging = false;
 let startX = 0;
 let moveX = 0;
 let autoSlideInterval;
+let section_mine=document.getElementsByClassName('section_mine')[0];
+let section_mine__R=document.getElementsByClassName('section_mine__R')[0];
+let section_mine__L=document.getElementsByClassName('section_mine__L')[0];
 
 
 let loginStatuse = 'login'
@@ -126,16 +129,16 @@ autoSlide();
 
 
 
-let passwordFormBox = $.getElementById('passwordBox'),
-    passwordFormBoxRemember = $.getElementById('passwordBoxRemember'),
-    inputPasswordRemember = $.getElementById('inputPasswordRemember'),
-    inputPassword = $.getElementById('inputPassword'),
-    emailBox = $.getElementById('emailBox'),
-    inputEmail = $.getElementById('inputEmail'),
-    myCheckboxRemember = $.getElementById('myCheckboxRemember'),
-    inputConfirmeitionFirstName = $.getElementById('inputConfirmeitionFirstName'),
-    inputConfirmeitionLastName = $.getElementById('inputConfirmeitionLastName'),
-    submitBtn = $.getElementById('submit')
+let passwordFormBox = document.getElementById('passwordBox'),
+    passwordFormBoxRemember = document.getElementById('passwordBoxRemember'),
+    inputPasswordRemember = document.getElementById('inputPasswordRemember'),
+    inputPassword = document.getElementById('inputPassword'),
+    emailBox = document.getElementById('emailBox'),
+    inputEmail = document.getElementById('inputEmail'),
+    myCheckboxRemember = document.getElementById('myCheckboxRemember'),
+    inputConfirmeitionFirstName = document.getElementById('inputConfirmeitionFirstName'),
+    inputConfirmeitionLastName = document.getElementById('inputConfirmeitionLastName'),
+    submitBtn = document.getElementById('submit')
 
 const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
 const passwordRegex = /^\S{8,16}$/;
@@ -146,17 +149,17 @@ let testPassword = inputPassword.value;
 let testPasswordRemember = inputPasswordRemember.value;
 
 
-let btnLoginChoice = $.getElementById('btnLoginChoice'),
-    btnSigninChoice = $.getElementById('btnSigninChoice'),
-    form_toggleBGMover = $.getElementsByClassName('form_toggleBGMover')[0],
-    form_footerLink = $.getElementById('form_footerLink'),
-    form_groupSignin_content = $.getElementsByClassName('form_groupSignin_content')[0],
-    form_footer = $.getElementsByClassName('form_footer')[0],
-    form_toggle = $.getElementsByClassName('form_toggle')[0],
-    unRemember_BackToLogin = $.getElementsByClassName('unRemember_BackToLogin')[0],
-    checkbox_group = $.getElementsByClassName('checkbox_group')[0],
-    inputbox_emailCode = $.getElementsByClassName('inputbox_emailCode')[0],
-    emailCodebox_parent = $.getElementsByClassName('emailCodebox_parent')[0]
+let btnLoginChoice = document.getElementById('btnLoginChoice'),
+    btnSigninChoice = document.getElementById('btnSigninChoice'),
+    form_toggleBGMover = document.getElementsByClassName('form_toggleBGMover')[0],
+    form_footerLink = document.getElementById('form_footerLink'),
+    form_groupSignin_content = document.getElementsByClassName('form_groupSignin_content')[0],
+    form_footer = document.getElementsByClassName('form_footer')[0],
+    form_toggle = document.getElementsByClassName('form_toggle')[0],
+    unRemember_BackToLogin = document.getElementsByClassName('unRemember_BackToLogin')[0],
+    checkbox_group = document.getElementsByClassName('checkbox_group')[0],
+    inputbox_emailCode = document.getElementsByClassName('inputbox_emailCode')[0],
+    emailCodebox_parent = document.getElementsByClassName('emailCodebox_parent')[0]
 
 
 let intervalSubmitBTN
@@ -192,11 +195,45 @@ passwordFormBoxRemember.firstElementChild.addEventListener('click', FpasswordFor
 
 
 
+
 import {
     FshowModule,
     FhideModule
 } from './component/masseg.js'
 import FrundomCreate from './component/rundom.js'
+
+
+
+
+function FsetCookisUsernamePassword(cName='',cValue='',time=1) {
+    document.cookie=cName+'='+cValue+';max-age='+(time*60*60*24*30*12)
+
+}
+
+function FgetCookisUsernamePassword(cookie_name='') {
+    // console.log(document.cookie)
+    
+    let name = cookie_name + "=";
+    let decodedCookie = decodeURIComponent(document.cookie);
+    let ca = decodedCookie.split(';');
+    let ca2 = []
+    let cookieFinded=null
+  ca.forEach((e)=>{
+     e = e.trim()
+    ca2.push(e.split('='))
+    })
+    ca2.some((e)=>{
+
+        if(e[0]==cookie_name){
+            cookieFinded=e;
+            return true
+        }
+        
+    })
+    return cookieFinded
+}
+
+
 
 
 let inputCodeSend=FrundomCreate(5);
@@ -215,24 +252,30 @@ submitBtn.addEventListener('click', (e) => {
     // console.log(passwordRegex.test(testPassword)); // true
     // console.log(myCheckboxRemember.value); // true
     if (loginStatuse != 'unRemember' && loginStatuse != 'unRememberPassword') {
-        if (emailRegex.test(testEmail) && passwordRegex.test(testPassword))
+        if (emailRegex.test(testEmail) && passwordRegex.test(testPassword)){
             FshowModule(' اطلاعات موفقیت آمیز بود ', true, 5000)
-        else if (emailRegex.test(testEmail))
-            FshowModule(' رمز عبور باید 8 تا 16 کاراکتر باشد !', false, 5000)
-    } else if (loginStatuse == 'unRemember') {
-        if (emailRegex.test(testEmail)){
+            if(myCheckboxRemember.checked){
+                FsetCookisUsernamePassword('Shoosiz7LoginEmail',testEmail)
+                FsetCookisUsernamePassword('Shoosiz7LoginPassword',testPassword)
+            }
+        }
+        else if (emailRegex.test(testEmail)){FshowModule(' رمز عبور باید 8 تا 16 کاراکتر باشد !', false, 5000)}
+
+     } else if (loginStatuse == 'unRemember') {
+              if (emailRegex.test(testEmail)){
             FshowModule(' کد به ایمیل شما ارسال شد', true, 3000)
             FmoveLoginSigninBtnHandler({target:{id:'unRememberPassword'},preventDefault:()=>{}})
-        }else{
-            FshowModule(' ایمیل شما معتبر نیست ! ', false, 3000)
-        }
-    }
+
+        }else{FshowModule(' ایمیل شما معتبر نیست ! ', false, 3000)}
+     }
     else{
         if(passwordRegex.test(testPassword) && passwordRegex.test(testPasswordRemember)){
             if(testPassword!==testPasswordRemember){
             FshowModule(' رمز عبور باید با رمز عبور مجدد یکی باشد!', false, 3000)
             }else if(inputCode==inputCodeSend){
             FshowModule(' رمز عبور با موفقیت تغییر کرد!', true, 3000)
+            FsetCookisUsernamePassword('Shoosiz7LoginPassword',testPassword)
+            // FsetCookisUsernamePassword() // set password cookis
             }else{
             FshowModule(' کد شما نا معتبر است !', false, 3000)
             }
@@ -327,7 +370,7 @@ function FmoveLoginSigninBtnHandler(e) {
     FEchangeInputPassword({target:{value:inputPassword.value}})
     inputPasswordRemember.value=null
     FEchangeInputPassword({target:{value:inputPasswordRemember.value}})
-    if (e.target.id == 'btnSigninChoice' && loginStatuse == 'login') {
+    if (e.target.id == 'btnSigninChoice' && loginStatuse != 'signin') {
         loginStatuse = 'signin';
         btnLoginChoice.className = ''
         btnSigninChoice.classList = 'active'
@@ -362,7 +405,7 @@ function FmoveLoginSigninBtnHandler(e) {
 
 
 
-    } else if (e.target.id == 'btnLoginChoice' && loginStatuse == 'signin') {
+    } else if (e.target.id == 'btnLoginChoice' && loginStatuse != 'login') {
         loginStatuse = 'login';
         btnSigninChoice.classList = ''
         btnLoginChoice.className = 'active'
@@ -391,7 +434,7 @@ function FmoveLoginSigninBtnHandler(e) {
                     clearInterval(intervalSubmitBTN)
             }
         }, 200)
-    } else if (e.target.id == 'form_footerLink') {
+    } else if (e.target.id == 'form_footerLink' ) {
 
         loginStatuse = 'unRemember'
         form_toggle.classList.add('form_groupSignin_contentHide3')
@@ -419,7 +462,7 @@ function FmoveLoginSigninBtnHandler(e) {
                     clearInterval(intervalSubmitBTN)
             }
         }, 200)
-    } else {
+    } else if(loginStatuse == 'unRemember') {
         console.log(inputCodeSend);
         loginStatuse = 'unRememberPassword'
         passwordFormBox.classList.remove('form_groupSignin_contentHide2')
@@ -427,6 +470,26 @@ function FmoveLoginSigninBtnHandler(e) {
         passwordFormBoxRemember.classList.remove('form_groupSignin_contentHide2')
         emailCodebox_parent.classList.remove('form_groupSignin_contentHide3')
         unRemember_BackToLogin.getElementsByTagName('h3')[0].innerHTML='لطفا رمز عبور جدید خود را وارد کنید:'
+
+        
+        let submitBtnP = submitBtn.getElementsByTagName('p')[0];
+        let flagSubmit = true,
+            firstText = 'ورود',
+            lastText = ''
+
+        intervalSubmitBTN = setInterval(() => {
+            if (submitBtnP.innerHTML.length && flagSubmit) {
+                submitBtnP.innerHTML = submitBtnP.innerHTML.slice(0, -1)
+            } else {
+                flagSubmit = false
+                if (firstText.length) {
+                    lastText += firstText[0];
+                    firstText = firstText.substring(1);
+                    submitBtnP.innerHTML = lastText
+                } else
+                    clearInterval(intervalSubmitBTN)
+            }
+        }, 200)
     }
 
 }
@@ -515,6 +578,24 @@ btnSigninChoice.addEventListener('click', FmoveLoginSigninBtnHandler)
 form_footerLink.addEventListener('click', FmoveLoginSigninBtnHandler)
 
 
-for (const element of inputbox_emailCode.children) {
-    element.firstElementChild.addEventListener('keydown', Finputbox_emailCodeEventKeydown)
-}
+// window.addEventListener('load',(e)=>{
+    for (const element of inputbox_emailCode.children) {
+        element.firstElementChild.addEventListener('keydown', Finputbox_emailCodeEventKeydown)
+    }
+     if(FgetCookisUsernamePassword('Shoosiz7LoginEmail') && FgetCookisUsernamePassword('Shoosiz7LoginPassword')){
+         inputEmail.value=FgetCookisUsernamePassword('Shoosiz7LoginEmail')[1]
+        inputPassword.value=FgetCookisUsernamePassword('Shoosiz7LoginPassword')[1]
+        }
+// })
+// inputEmail.addEventListener('loadstart',()=>{
+//     console.log('xcxcvxcv')
+
+// })
+
+setTimeout(()=>{
+
+    section_mine__R.classList.remove('form_groupSignin_contentHideTCome')
+    section_mine__L.classList.remove('form_groupSignin_contentHideLCome')
+    section_mine.classList.remove('form_groupSignin_contentHideBCome')
+    
+},50)

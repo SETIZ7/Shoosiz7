@@ -48,7 +48,7 @@
     gap: 3%;
     grid-template-columns: 4.5fr 1fr 1fr 1fr;
 
-    button{
+    button,a{
         height:  clamp(0.1rem,2.5vw,50rem);
         width: auto;
     }
@@ -519,7 +519,7 @@ font-size: 3.8vw;
     gap: 3%;
     grid-template-columns: 4fr 1fr 1fr 1fr;
 
-    button{
+    button,a{
         padding: 1vw;
         height: 8vw;
         /* height:  clamp(1.1rem,2.5vw,50rem); */
@@ -542,7 +542,7 @@ font-size: 3.8vw;
         /* justify-content: center; */
         /* gap: 0.7vw ; */
         /* text-align: center; */
-    top: 0%;
+    top: 15%;
         /* align-items: center; */
      span:nth-child(2){
         /* color: var(--mainColorWW); */

@@ -53,6 +53,9 @@
         }
 }
 */
+body{
+    transition: all 0.5s ease-in-out;
+}
 #BG_text__blur{
     user-select: none;
     font-family: 'Peyda';
