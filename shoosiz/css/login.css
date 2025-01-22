@@ -120,7 +120,7 @@ background: #fff;
     top: clamp(1%,0.5vw + 3%,20%);
     width: clamp(0px,3vw,90vw);
     transition: all 500ms;
-    animation: rotate 25s 4s ease-in-out infinite;
+    animation: Arotate 25s 4s ease-in-out infinite;
 
     svg{
     fill: var(--mainColorWWW);
@@ -134,36 +134,19 @@ background: #fff;
     left: clamp(1%,2.5vw + 85%,90%);
     top: clamp(1%,2.5vw + 20%,40%);
     width: clamp(0px,2vw,90vw);
-  animation: rotate 15s 2s ease-in-out infinite;
+  animation: Arotate 15s 2s ease-in-out infinite;
 
 }
 .svgStarParent3{
     left: clamp(1%,1.5vw + 90%,95%);
     top: clamp(1%,2.5vw + 35%,50%);
     width: clamp(0px,1.2vw,90vw);
-  animation: rotate 10s ease-in-out infinite;
+  animation: Arotate 10s ease-in-out infinite;
 
 }
 
 
 
-
-@keyframes rotate {
-    from {
-      transform: rotate(270deg);
-    }
-    30%{
-      transform: rotate(360deg);
-    }
-    98%{
-  
-        transform: rotate(-90deg);
-      }
-      
-      to {
-        transform: rotate(-90deg);
-    }
-  }
 
 
 

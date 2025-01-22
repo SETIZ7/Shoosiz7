@@ -1,4 +1,5 @@
 export default function FrouterObject(myRout) {
+    console.log(myRout)
     switch (myRout) {
         case './':
         case './index':
@@ -6,6 +7,14 @@ export default function FrouterObject(myRout) {
         return{
                 title:' shoosiz ',
                 rout:'./index.html'
+            }
+        case './#CallToMeFooter':
+        case './:CallToMeFooter':
+        case './index#CallToMeFooter':
+        case './index:CallToMeFooter':
+        return{
+                title:' shoosiz ',
+                rout:'./index.html#CallToMeFooter'
             }
             break;
         case './login':

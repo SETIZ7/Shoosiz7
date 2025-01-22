@@ -14,6 +14,14 @@
     font-family:'Growth' ;
     src: url('../fonts/Growth/Growth.otf');
 }
+@font-face {
+    font-family:'Snaap' ;
+    src: url('../fonts/Snaap/Snaap.ttf');
+}
+@font-face {
+    font-family:'Juhyna' ;
+    src: url('../fonts/post-no-bills-jaffna-cufonfonts-webfont/PostNoBillsJaffna-Bold.woff');
+}
 
 *,*::after,*::before{
     margin: 0;
@@ -21,7 +29,7 @@
     box-sizing: border-box;
     font-family:'AUGUSTUS';
     -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
-    scroll-behavior: smooth;  
+    scroll-behavior:smooth;  
 
     &:focus{
         outline: none;
@@ -49,12 +57,29 @@
     --btnColorB: #1b1b1b;
     --btnColorGradiant:linear-gradient(270deg, #000000 -32.46%, #5c5c5c 50%);
     --svgColor: #c7c7c7;
-    --borderReduseBtnDif:0.5vw;
     --mainColorWW: #bebebe;
     --mainColorWWW: #f3f3f3;
     --bgTColorOpacity: #2928286e;
     --colorBlue1: #00aeff;
     --colorBlue2: #001aff;
+    --colorYellow1: #d9ff00;
+    --colorYellow2: #fffb0a;
+    --colorRed1: #ff0000;
+    --colorRed2: #ff3c00;
+    --colorOreng2: #ffb327;
+    --colorGreen1: #2ec500;
+    --colorGreen2: #59ff27;
+    --colorGreen3: #92ff2d;
+    --colorGreen4: #b4ff6d;
+    --colorGrey:  #666666;
+    --colorPink:  #ff0095;
+    --colorBlack000:  #000000;
+    --colorWhiteFFF:  #FFFFFF;
+    --colorWhiteFF:  ##ececec;
+    --colorWhiteF:  #eeeeeee7;
+    --borderReduseBtnDif:0.5vw;
+    --borderReduseBtnDif1:1vw;
+    --borderReduseBtnDif2:1.5vw;
 }
 
 /* input:-webkit-autofill {
@@ -144,7 +169,7 @@ body{
     font-family: 'AUGUSTUS';
     background-color:var(--mainColor); 
     /* background-image:linear-gradient(900deg, var(--mainColor)  , var(--mainColorW) 70%) */
-    width: 95%;
+    width: 100vw;
     margin: auto;
     overflow-x: hidden;
     transition: all 300ms ease;
@@ -220,6 +245,36 @@ header{
         }
 }
 
+.main_CenterHr{
+    margin-bottom: 2vw;
+    border: 0.1vw solid;
+    border-image-source: radial-gradient( #7e7e7e -3vw, #66666600 50vw);
+    border-image-slice: 1;
+    /* background-image: radial-gradient(var(--mainColorW),red); */
+}
+
+.symbol_supporter__Boxses{
+    display: flex;  
+    gap: 15%;
+}
+
+.symbol_icon{
+    flex-grow: 1;
+    flex-shrink: 1; 
+    height: 6vw;
+    text-align: center;
+    color: var(--mainColorWW);
+    display: flex;
+    flex-direction: column;
+    gap: 10%;
+    text-wrap: nowrap;
+    font-size:  clamp(0.1rem,0.8vw,2rem);
+}
+
+.symbolSvgBox{
+    width: 100%;
+    height: 60%;
+}
 
 
 
@@ -273,3 +328,26 @@ header{
       margin: 0 !important;
     }
 
+
+
+
+
+
+
+
+    @keyframes Arotate {
+        from {
+          transform: rotate(270deg);
+        }
+        30%{
+          transform: rotate(360deg);
+        }
+        98%{
+      
+            transform: rotate(-90deg);
+          }
+          
+          to {
+            transform: rotate(-90deg);
+        }
+      }

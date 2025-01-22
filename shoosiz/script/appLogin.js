@@ -99,7 +99,7 @@ function autoSlide() {
     autoSlideInterval = setInterval(() => {
         currentIndex = (currentIndex + 1) % totalSlides;
         goToSlide(currentIndex);
-    }, 5000);
+    }, 3000);
 }
 
 autoSlide();

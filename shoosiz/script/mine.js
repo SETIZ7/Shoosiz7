@@ -146,6 +146,7 @@ function FsetPropertyRootColor(params) {
         document.documentElement.style.setProperty('--mainColorYellow2','#8b865a')
         document.documentElement.style.setProperty('--mainColorYellow3','#807500') 
         document.querySelector('.main_content__boxImg').style.setProperty('filter','brightness(0)')
+        document.querySelector('.main_content__boxImgActive')?.style.setProperty('filter','brightness(0)')
     }
     else{
         
@@ -161,6 +162,7 @@ function FsetPropertyRootColor(params) {
         document.documentElement.style.setProperty('--mainColorYellow2','#fff6a7')
         document.documentElement.style.setProperty('--mainColorYellow3','#fff597')
         document.querySelector('.main_content__boxImg').style.setProperty('filter','brightness(1)')
+        document.querySelector('.main_content__boxImgActive')?.style.setProperty('filter','brightness(1)')
     }
 }
 
@@ -200,6 +202,16 @@ window.addEventListener('load',()=>{
 })
 
 
+setTimeout(()=>{
+    if(localStorage.getItem('TemShoosiz')=='durk'){
+        btnModeDurkLite.className='btn_dif navBtn_durkxLiteMode navBtn_durkMode'
+        FsetPropertyRootColor('durk')
+      }
+      else{
+      btnModeDurkLite.className='btn_dif navBtn_durkxLiteMode navBtn_liteMode'
+      FsetPropertyRootColor('lite')
+      }
+},1000)
 
 
 

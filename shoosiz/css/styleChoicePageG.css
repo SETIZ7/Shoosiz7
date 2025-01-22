@@ -125,10 +125,7 @@ padding-top: 3vw;
 
 .main_CenterHr{
     margin-top: 2vw;
-    border: 0.1vw solid;
-    border-image-source: radial-gradient( #7e7e7e -3vw, #66666600 50vw);
-    border-image-slice: 1;
-    /* background-image: radial-gradient(var(--mainColorW),red); */
+    margin-bottom: 0;
 }
 
 .main_proAngles__imgBox{
@@ -352,30 +349,7 @@ height: clamp(0.1rem,2vw,3rem);
         width: 70%;
     }
 
-    .symbol_supporter__Boxses{
-        display: flex;  
-        gap: 15%;
-    }
-
-    .symbol_icon{
-        flex-grow: 1;
-        flex-shrink: 1; 
-        height: 6vw;
-        text-align: center;
-        color: var(--mainColorWW);
-        display: flex;
-        flex-direction: column;
-        gap: 10%;
-        text-wrap: nowrap;
-        font-size:  clamp(0.1rem,0.8vw,2rem);
-    }
-
-    .symbolSvgBox{
-        width: 100%;
-        height: 60%;
-    }
-
-
+  
     .main_iconSize__boxParent{
         position: relative;
         width: 13vw;

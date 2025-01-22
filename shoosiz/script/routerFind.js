@@ -33,15 +33,29 @@ import router from './router.js'
 //     })
 // }
 
-export function FmeineGetHTMLcodeSPR(urlName = '.' + /\/\w+(\.\w*|[^\/])$/.exec(location.pathname)[0]) {
+export function FmeineGetHTMLcodeSPR(urlName = '.' + /\/\w+(\.\w*|[^\/])$/.exec(location.pathname)[0],positionScrool=null) {
     fetch(router(urlName).rout).then((e) => {
         e.text().then(ee => {
-            // حذف HTML فعلی و جایگزینی با HTML جدید
+           
             window.document.head.parentElement.innerHTML = ee;
 
             // لود دوباره اسکریپت‌ها به ترتیب
             let scripts = document.querySelectorAll('script');
             loadScriptsSequentially(scripts, 0);
+
+            if(positionScrool){
+                // window.document.documentElement.style.transition='all 1s ease'
+                // console.log(window.document.documentElement.scrollTop=window.document.documentElement.offsetHeight)
+
+                setTimeout(() => {
+                    
+                    window.scrollTo({  
+                        top: document.documentElement.scrollHeight,
+                        behavior: 'smooth'  // انیمیشن نرم  
+                      });
+                }, 100);
+                // console.log(CallToMeFooter.offsetParent.offsetHeight,CallToMeFooter,CallToMeFooter.offsetParent.scrollHeight)
+            }
 
             return ee;
         });
@@ -107,12 +121,15 @@ function loadScriptsSequentially(scripts, index) {
 
 
 export default function FfixTagLinkA() {
-    console.log(document.querySelector('.aOtherPage').onclick)
     document.querySelectorAll('.aOtherPage').forEach(e=>{
         e.addEventListener('click',ee=>{
             ee.preventDefault()
             history.pushState({},'',e.href)
+            if(!e.classList.contains('aOtherPageLink'))
             FmeineGetHTMLcodeSPR(e.getAttribute('href'))
+        else{
+            FmeineGetHTMLcodeSPR(e.getAttribute('href'),100)
+        }
         })
 
     }) 
@@ -123,9 +140,8 @@ FfixTagLinkA();
 [1,2].forEach
 
     window.onpopstate=e=>{
-        //     console.log('first1')
         //         // e.preventDefault()
-        FmeineGetHTMLcodeSPR('.'+/(\/\w+(\.\w*|[^\/])$)/.exec(e.target.location.pathname)[0].slice(0,-5),e.target.location.href)
+        FmeineGetHTMLcodeSPR('.'+e.target.location.pathname)
         }
 // })
 // FfixTagLinkA()
