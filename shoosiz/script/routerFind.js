@@ -128,6 +128,7 @@ export default function FfixTagLinkA() {
             if(!e.classList.contains('aOtherPageLink'))
             FmeineGetHTMLcodeSPR(e.getAttribute('href'))
         else{
+            console.log(e.getAttribute('href'))
             FmeineGetHTMLcodeSPR(e.getAttribute('href'),100)
         }
         })
@@ -137,12 +138,25 @@ export default function FfixTagLinkA() {
 
 
 FfixTagLinkA();
-[1,2].forEach
+// [1,2].forEach
 
     window.onpopstate=e=>{
         //         // e.preventDefault()
         FmeineGetHTMLcodeSPR('.'+e.target.location.pathname)
         }
+
+        
+        fetch(window.location.href).then((e)=>{
+          if(e.headers.get('X-Scroll-To-ID')=='#CallToMeFooter'){
+            setTimeout(()=>{
+                window.scrollTo({  
+                    top: document.documentElement.scrollHeight,
+                    behavior: 'smooth'  // انیمیشن نرم  
+                  });
+            },100)
+          }
+         }
+        )
 // })
 // FfixTagLinkA()
     // if ('caches' in window) {

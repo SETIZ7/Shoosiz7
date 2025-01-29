@@ -3,6 +3,10 @@
     src: url('../fonts/Peyda/Peyda-ExtraBold.ttf');
 }
 @font-face {
+    font-family:'PeydaB' ;
+    src: url('../fonts/Peyda/Peyda-Black.ttf');
+}
+@font-face {
     font-family:'PeydaL' ;
     src: url('../fonts/Peyda/peyda-light.ttf');
 }

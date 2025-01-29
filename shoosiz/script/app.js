@@ -47,6 +47,21 @@ let parallax = new Parallax(scene111);
     },
     
       });  
+    new Swiper('.slayderParentOfferBox', {
+    // Optional parameters
+    // direction: 'vertical',
+    // loop: true,
+    slidesPerView: 1,
+    
+    autoplay: {
+      delay: 4000,
+    }
+    // If we need pagination
+    // ,pagination: {
+    //   el: '.swiper-pagination',
+    // },
+    
+      });  
 
 
 
@@ -120,7 +135,7 @@ let parallax = new Parallax(scene111);
 
               }
 
-              FgetTimeRemainder(new Date(2025,0,24))
+              FgetTimeRemainder(new Date(2025,0,28))
 
 
 
@@ -216,6 +231,49 @@ let parallax = new Parallax(scene111);
                 // console.log(-(docHeight * ( progress))/(50000/window.innerWidth))
               });
 
+
+
+              let ScrollConteiner = document.getElementsByClassName('ScrollConteiner')
+              ,positionScrollXFirst=0
+              
+              function FmousemoveElamentScroolHandler(e) {
+                console.log(positionScrollXFirst - e.clientX)
+
+                let MyScrollFunction = () =>{
+                this.scrollBy((positionScrollXFirst - e.clientX)*2,0)
+              }
+
+            requestAnimationFrame(MyScrollFunction);
+
+                  // console.log(this.scrollLeft,this.scrollWidth ,this.clientWidth)
+                  // console.log(window.scrollY)
+                  // if(e.buttons==1){
+                    // console.log(e.layerX,e.screenX,e.pageX,e.offsetX)
+                    // console.log(e)
+                  // }
+
+              }
+
+              for (const element of ScrollConteiner) {
+                element.addEventListener('mousedown',(e)=>{
+                  e.preventDefault()
+                  positionScrollXFirst = e.clientX
+                  element.addEventListener('mousemove',FmousemoveElamentScroolHandler)
+                })
+               
+                element.addEventListener('mouseup',()=>{
+                element.removeEventListener('mousemove',FmousemoveElamentScroolHandler)
+                })
+                // window.onmouseleave
+                element.addEventListener('mouseleave',()=>{
+                element.removeEventListener('mousemove',FmousemoveElamentScroolHandler)
+                })
+              }
+
+
+              // .then((e)=>{
+              //   console.log(e)
+              // })
 
 
 

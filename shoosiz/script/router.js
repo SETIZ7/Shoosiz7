@@ -1,5 +1,5 @@
 export default function FrouterObject(myRout) {
-    console.log(myRout)
+    // console.log(myRout)
     switch (myRout) {
         case './':
         case './index':
@@ -24,6 +24,15 @@ export default function FrouterObject(myRout) {
                 rout:'./login.html'
             }
             break;
+
+        case './shoop':
+        case './shoop.html':
+            return{
+                title:' shoop | فروشگاه ',
+                rout:'./shoop.html'
+            }
+            break;
+
         case './choicePageG':
         case './choicePageG.html':
             return{

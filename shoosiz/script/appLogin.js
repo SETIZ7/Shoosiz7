@@ -1,3 +1,6 @@
+import {FmeineGetHTMLcodeSPR} from './routerFind.js';
+
+
 const slides = document.querySelector('.slides');
 const slideButtons = document.querySelectorAll('.navigation button');
 const totalSlides = document.querySelectorAll('.slide').length;
@@ -139,6 +142,7 @@ let passwordFormBox = document.getElementById('passwordBox'),
     inputConfirmeitionFirstName = document.getElementById('inputConfirmeitionFirstName'),
     inputConfirmeitionLastName = document.getElementById('inputConfirmeitionLastName'),
     submitBtn = document.getElementById('submit')
+    
 
 const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
 const passwordRegex = /^\S{8,16}$/;
@@ -200,7 +204,7 @@ import {
     FshowModule,
     FhideModule
 } from './component/masseg.js'
-import FrundomCreate from './component/rundom.js'
+// import FrundomCreate from './component/rundom.js'
 
 
 
@@ -236,7 +240,7 @@ function FgetCookisUsernamePassword(cookie_name='') {
 
 
 
-let inputCodeSend=FrundomCreate(5);
+let inputCodeSend='sssss';
 
 submitBtn.addEventListener('click', (e) => {
     e.preventDefault()
@@ -251,20 +255,113 @@ submitBtn.addEventListener('click', (e) => {
     // console.log(emailRegex.test(testEmail)); // true
     // console.log(passwordRegex.test(testPassword)); // true
     // console.log(myCheckboxRemember.value); // true
+    // import moduleName from '../api/loginpart/login.php';
     if (loginStatuse != 'unRemember' && loginStatuse != 'unRememberPassword') {
-        if (emailRegex.test(testEmail) && passwordRegex.test(testPassword)){
-            FshowModule(' اطلاعات موفقیت آمیز بود ', true, 5000)
-            if(myCheckboxRemember.checked){
-                FsetCookisUsernamePassword('Shoosiz7LoginEmail',testEmail)
-                FsetCookisUsernamePassword('Shoosiz7LoginPassword',testPassword)
-            }
+        if (!emailRegex.test(testEmail) && !passwordRegex.test(testPassword)){
+ 
+            FshowModule(' اطلاعات را درست وارد کنید ', false, 5000)
+            
+
+
+            // FshowModule(' اطلاعات موفقیت آمیز بود ', true, 5000)
         }
-        else if (emailRegex.test(testEmail)){FshowModule(' رمز عبور باید 8 تا 16 کاراکتر باشد !', false, 5000)}
+        else if (!passwordRegex.test(testPassword)){FshowModule(' رمز عبور باید 8 تا 16 کاراکتر باشد !', false, 5000)}
+
+
+        if(loginStatuse=='signin'){
+            // console.log(inputConfirmeitionFirstName.value)
+                            fetch('http://localhost/shooosiz/apis/regesterpart/register.php',{
+                                    method: 'POST',
+                                         headers: {
+                                           'Content-Type': 'application/json', 
+                                         },
+                                         body: JSON.stringify({ 
+                                            email:testEmail,
+                                            password:testPassword,
+                                               first_name : inputConfirmeitionFirstName.value,
+                                               last_name : inputConfirmeitionLastName.value,
+                                         }),
+                                            credentials: 'include'
+                                }).then(ee=>{
+                                    // console.log(ee)
+                                    return ee.json();
+                                }).then(ee=>{
+                                    FshowModule(ee.message, ee.success, 5000)
+                            if(ee.success){
+                                if(myCheckboxRemember.checked){
+                                    FsetCookisUsernamePassword('Shoosiz7LoginEmail',testEmail)
+                                    FsetCookisUsernamePassword('Shoosiz7LoginPassword',testPassword)
+                                }
+                            history.pushState({},'','./index')
+                                FmeineGetHTMLcodeSPR('./index')
+                            }
+                                }).catch(ee=>{
+                                    console.log(ee)
+                                FshowModule(' اطلاعات ارسال نشد ', false, 5000)
+                                })
+        }else{
+                        // fetch('http://localhost/shooosiz/loginpart/login.php',{
+                            fetch('http://localhost/shooosiz/apis/loginpart/login.php',{
+                                // fetch('http://localhost/shooosiz/shoosiz/api/loginpart/login.php',{
+                                    method: 'POST',
+                                         headers: {
+                                           'Content-Type': 'application/json', 
+                                         },
+                                         body: JSON.stringify({
+                                            email:testEmail,
+                                            password:testPassword,
+                                            
+                                         }),
+                                            credentials: 'include'
+                                }).then(ee=>{
+                                    // console.log(ee)
+                                    return ee.json();
+                                }).then(ee=>{
+                                    FshowModule(ee.message, ee.success, 5000)
+                            if(ee.success){
+                                if(myCheckboxRemember.checked){
+                                    FsetCookisUsernamePassword('Shoosiz7LoginEmail',testEmail)
+                                    FsetCookisUsernamePassword('Shoosiz7LoginPassword',testPassword)
+                                }
+                            history.pushState({},'','./index')
+                                FmeineGetHTMLcodeSPR('./index')
+                            }
+                                }).catch(ee=>{
+                                    // console.log(ee)
+                                FshowModule(' اطلاعات ارسال نشد ', false, 5000)
+                                })
+        }
 
      } else if (loginStatuse == 'unRemember') {
               if (emailRegex.test(testEmail)){
+                fetch('http://localhost/shooosiz/apis/findEmailpart/findEmail.php',{
+                    method: 'POST',
+                    headers: {
+                      'Content-Type': 'application/json', 
+                    },
+                    body: JSON.stringify({
+                       email:testEmail,
+                    //    password:testPassword,
+                       
+                    }),
+                       credentials: 'include'
+                })
+                .then(ee=>{
+                    // console.log(ee)
+                    return ee.json();
+                }).then(ee=>{
+                    // console.log(ee.message)
+                    FshowModule(ee.message, ee.success, 5000)
+            if(ee.success){
+                // console.log(ee)
             FshowModule(' کد به ایمیل شما ارسال شد', true, 3000)
-            FmoveLoginSigninBtnHandler({target:{id:'unRememberPassword'},preventDefault:()=>{}})
+            inputCodeSend = ee.code
+            FmoveLoginSigninBtnHandler({target:{id:'unRemember'},preventDefault:()=>{}})
+            }
+                }).catch(ee=>{
+                    // console.log(ee)
+                FshowModule(' اطلاعات ارسال نشد ', false, 5000)
+                })
 
         }else{FshowModule(' ایمیل شما معتبر نیست ! ', false, 3000)}
      }
@@ -273,8 +370,43 @@ submitBtn.addEventListener('click', (e) => {
             if(testPassword!==testPasswordRemember){
             FshowModule(' رمز عبور باید با رمز عبور مجدد یکی باشد!', false, 3000)
             }else if(inputCode==inputCodeSend){
-            FshowModule(' رمز عبور با موفقیت تغییر کرد!', true, 3000)
-            FsetCookisUsernamePassword('Shoosiz7LoginPassword',testPassword)
+
+                fetch('http://localhost/shooosiz/apis/changPass/changePass.php',{
+                    // fetch('http://localhost/shooosiz/shoosiz/api/loginpart/login.php',{
+                        method: 'POST',
+                             headers: {
+                               'Content-Type': 'application/json', 
+                             },
+                             body: JSON.stringify({
+                                email:testEmail,
+                                password:testPassword,
+                                
+                             }),
+                                credentials: 'include'
+                    }).then(ee=>{
+                        // console.log(ee)
+                        return ee.json();
+                    }).then(ee=>{
+                        FshowModule(ee.message, ee.success, 5000)
+                if(ee.success){
+            // FshowModule(' رمز عبور با موفقیت تغییر کرد!', true, 3000)
+                    if(myCheckboxRemember.checked){
+                        FsetCookisUsernamePassword('Shoosiz7LoginEmail',testEmail)
+                        FsetCookisUsernamePassword('Shoosiz7LoginPassword',testPassword)
+                    }
+                    setTimeout(()=>{
+                        history.pushState({},'','./index')
+                        
+                        FmeineGetHTMLcodeSPR('./index')
+                    },2000)
+                }
+                    }).catch(ee=>{
+                        // console.log(ee)
+                    FshowModule(' اطلاعات ارسال نشد ', false, 5000)
+                    })
+
+            // FshowModule(' رمز عبور با موفقیت تغییر کرد!', true, 3000)
+            // FsetCookisUsernamePassword('Shoosiz7LoginPassword',testPassword)
             // FsetCookisUsernamePassword() // set password cookis
             }else{
             FshowModule(' کد شما نا معتبر است !', false, 3000)
@@ -329,7 +461,7 @@ inputPassword.addEventListener('keydown', e =>{
     if(e.key=='Enter' && loginStatuse==='unRememberPassword'){
         inputPasswordRemember.focus()
     }
-    else{
+    else if(e.key=='Enter'){
         submitBtn.click()
     }
     
@@ -463,7 +595,7 @@ function FmoveLoginSigninBtnHandler(e) {
             }
         }, 200)
     } else if(loginStatuse == 'unRemember') {
-        console.log(inputCodeSend);
+        // console.log(inputCodeSend);
         loginStatuse = 'unRememberPassword'
         passwordFormBox.classList.remove('form_groupSignin_contentHide2')
         emailBox.classList.add('form_groupSignin_contentHide2')
