@@ -87,6 +87,9 @@ navBtnSearch.addEventListener('click',(e)=>{
     if(inputSearchBox.hasAttribute('hidden')){
         inputSearchBox.removeAttribute('hidden')
         searchBox_parent.className='searchBox_parent'
+    }else{
+        console.log('first')
+        
     }
     // console.log(inputSearchBox.hasAttribute('hidden'));
 })
@@ -310,8 +313,8 @@ window.addEventListener('resize',(e)=>{
 //   }
   
 //   customElements.define("my-element", MyCustomElmBoxBayIndex);
-  let x = 10
-  console.log(x.toLocaleString('ar-SA'))
+//   let x = 10
+//   console.log(x.toLocaleString('ar-SA'))
 for (const element of document.getElementsByClassName('myTagSugestionBestseller_boxes')) {
     //  console.log()
         element.innerHTML=`      

@@ -28,6 +28,7 @@ const transporter = nodemailer.createTransport({
   });
   
   app.post('/apis/findEmailpart/sendEmail', async (req, res) => {
+    // console.log('first')
       const { email } = req.body;
   
       if (!email) {

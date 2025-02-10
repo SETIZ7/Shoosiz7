@@ -327,6 +327,8 @@ background: #fff;
         }
 
         .form_group input {
+          text-align: end;
+          direction: ltr;
           height: 100%;
             width: 100%;
             padding: 1vw;

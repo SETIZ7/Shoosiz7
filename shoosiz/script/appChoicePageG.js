@@ -1,6 +1,10 @@
 // import  FfixTagLinkA  from './routerFind.js';
 // console.log(FfixTagLinkA);
-    
+import {
+    FshowModule,
+    FhideModule
+} from './component/masseg.js'
+
 
 let angle_imgBox=document.querySelectorAll('.angle_imgBox')
 ,main_content__box=document.querySelector('.main_content__box')
@@ -8,6 +12,7 @@ let angle_imgBox=document.querySelectorAll('.angle_imgBox')
 ,main_content__boxScale=1
 
 
+ let sabadKharid = JSON.parse(localStorage.getItem('sabadKharid'))??[]
 
 
 //  rotate numbers
@@ -322,7 +327,7 @@ function FModuleSectionPropertisClick(e) {
     ModuleSectionPropertis.style.transform=' translateX(-50%) scale(0)'
     ModuleSectionPropertis.style.opacity='0'
     // ModuleSectionPropertis.style.top='25%'
-        window.removeEventListener(FeventKeyEscModule)
+        window.removeEventListener('click',FeventKeyEscModule)
     }
 }
 
@@ -360,5 +365,106 @@ setTimeout(()=>{
 
 
 
+    let rightimgBy = document.getElementById('rightimgBy'),
+        rightimg2By = document.getElementById('rightimg2By'),
+        backimgBy = document.getElementById('backimgBy'),
+        frontimgBy = document.getElementById('frontimgBy'),
+        topimgBy = document.getElementById('topimgBy'),
+        PraiceFooterBy = document.getElementById('PraiceFooterBy'),
+        typeBy = document.getElementById('typeBy'),
+        typecuminBy = document.getElementById('typecuminBy'),
+        propertisBy = document.getElementById('propertisBy')    
+
+// console.log(location.search.slice(1))
+                            fetch('http://'+MyIp+'/shooosiz/apis/getPro/getPro.php',{
+                                    method: 'POST',
+                                         headers: {
+                                           'Content-Type': 'application/json', 
+                                         },
+                                         body: JSON.stringify({
+                                            id:location.search.slice(1),                             
+                                         }),
+                                            credentials: 'include'
+                                }).then(ee=>{
+                                    // console.log(ee)
+                                    return ee.json();
+                                }).then(ee=>{
+                                    // FshowModule(ee.message, ee.success, 5000)
+                                    // console.log(ee.product[0])
+                                    // console.log(PraiceFooterBy.innerHTML)
+                                    rightimgBy.src=ee.product[0].rightimg??'./img/ChoicePageG/shoosh/p/JORDAN.png'
+                                    rightimg2By.src=ee.product[0].rightimg??'./img/ChoicePageG/shoosh/p/JORDAN.png'
+                                    backimgBy.src=ee.product[0].backimg??'./img/ChoicePageG/shoosh/p/Back.png'
+                                    frontimgBy.src=ee.product[0].frontimg??'./img/ChoicePageG/shoosh/p/removebg.png'
+                                    topimgBy.src=ee.product[0].topimg??'./img/ChoicePageG/shoosh/p/nnUp.png'
+                                    imgElm.src=main_content__box.firstElementChild.src
+                                    
+                                    PraiceFooterBy.innerHTML=ee.product[0].pricepro
+                                    typeBy.innerHTML=ee.product[0].type
+                                    typecuminBy.innerHTML=ee.product[0].typecumin
+                                    propertisBy.innerText=ee.product[0].propertis
+                                    // console.log(ee.product[0].propertis,propertisBy.innerHTML)
+                                }).catch(ee=>{
+                                    // console.log(ee)
+                                // FshowModule(' اطلاعات ارسال نشد ', false, 5000)
+                                })
 
 
+
+
+
+
+
+                                let foterMain_AddProduct = document.getElementsByClassName('foterMain_AddProduct')[0]
+                                // console.log(window.MyIp,window.user_id)
+                                foterMain_AddProduct.addEventListener('click',(e)=>{
+                                    sabadKharid = JSON.parse(localStorage.getItem('sabadKharid'))??[]
+                                    if(window.user_id){
+                                    if(sabadKharid.length>=1){
+                                       if(!sabadKharid.find(element=>{
+                                            if(element.id==location.search.slice(1) && window.user_id == element.user_id){
+                                        element.conte++
+                                FshowModule(  '  محصول در سبد خرید وجود داشت و تعداد آن افزایش یافت ! ' , true , 5000)
+
+                                                return true
+                                            }})){
+                      sabadKharid.push({id:location.search.slice(1),conte:1,user_id : window.user_id})
+                FshowModule(  '  محصول با موفقیت به سبد خرید اضافه شد ! ' , true , 5000)
+
+                                        }}
+
+                                    // for (const element of sabadKharid) {
+                                // console.log(element)
+                                        // if(element.id==location.search.slice(1) && window.user_id == element.user_id){
+
+                                            // element.conte++
+            // FshowModule(  '  محصول در سبد خرید وجود داشت و تعداد آن افزایش یافت ! ' , true , 5000)
+                                        //  break
+                                        // }
+                                        // else if( window.user_id == element.user_id){
+
+                                            // sabadKharid.push({id:location.search.slice(1),conte:1,user_id : window.user_id})
+            // FshowModule(  '  محصول با موفقیت به سبد خرید اضافه شد ! ' , true , 5000)
+            // break
+                                        // }
+                                    // console.log(sabadKharid)
+
+                                    
+                                    else{
+                                        sabadKharid.push({id:location.search.slice(1),conte:1,user_id : window.user_id})
+                                        FshowModule(  '  محصول با موفقیت به سبد خرید اضافه شد ! ' , true , 5000)
+                            
+                                    }
+            localStorage.setItem('sabadKharid',JSON.stringify(sabadKharid))
+                                }
+                                else{
+                                    FshowModule(  '  برای خرید اول وارد شوید ! ' , false , 5000)
+                                }
+                                    // console.log(location.search.slice(1))
+                                })
+
+
+
+
+
+                                

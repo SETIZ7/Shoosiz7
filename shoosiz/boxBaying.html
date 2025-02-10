@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title> Shoosiz | bying </title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="./css/mine.css" rel="stylesheet">
+        <link href="./css/boxBaying.css" rel="stylesheet">
+        <link href="./css/outputboxBaying.css" rel="stylesheet">
+        <link href="./css/component/navigation.css" rel="stylesheet">
+        <link href="./css/component/messeg.css" rel="stylesheet">
+        <link rel="shortcut icon" href="./img/ChoicePageG/logo/Untitled-1.png" type="image/x-icon">
+        <meta name="theme-color" content="#000"/>
+
+    </head>
+    <body>
+
+        <header>
+
+            <hr class="main_CenterHr mb-3.5 mt-6 sm:mt-4">
+            <div class="flex justify-center gap-8 mb-3.5">
+                <button class="btnCustomNeed" id="beforBayingBtn">
+                    خرید قبلی
+                </button>
+                <button class=" btnCustomNeed active " id="nawBayingBtn">
+                    سبد خرید
+                </button>
+            </div>
+            <hr class="main_CenterHr">
+        </header>
+
+    <div class="cart_container gap-10 flex-col lg:flex-row h-[40rem] lg:h-72 text-xs sm:text-[1.1rem]" id="cartContainer">
+        <div class="cart_summary w-full text-center text-[var(--mainColorWWW)] leading-10 lg:w-1/4 rounded-2xl ring-2 transition-all duration-200" id="detailsBayBox">
+            <h3 class=" text-2xl sm:text-4xl leading-10 sm:leading-20">
+                تکمیل خرید
+            </h3>
+            <p>   تعداد کالاها  :  <strong class="conteProAll">0</strong></p>
+            <p dir="rtl">   میزان تخفیف  :  <span class="discount offerPersenProAll text-red-600">  0 </span> %  </p>
+            <p>   جمع سبد خرید  : <strong class="priceProAll"> 0 </strong>  تومان  </p>
+        </div>
+        <div class="cart_items w-full h-full lg:w-3/4 text-[var(--mainColorWWW)] overflow-auto transition-all duration-200">
+           
+        </div>
+    </div>
+    <div class="bottom_section xl:absolute bottom-0 xl:h-fit text-[var(--btnColorB)] transition-all duration-200" id="boxBtnBayFooter">
+        <div class="discount_input">
+            <input type="text" placeholder="کد تخفیف" class=" myInputStayleFirst text-xl" id="offerInputAcsept">
+            <button class=" hover:bg-[var(--mainColorWW)]" id="offerBtnAcsept">تأیید</button>
+        </div>
+        <button class="checkout_button  hover:bg-[var(--mainColorWW)]" id="byAllProBtn">خرید سفارش</button>
+    </div>
+
+
+        <script src="./script/component/masseg.js" type="module"></script>
+        <script src="./script/component/Cnavigation.js"></script>
+        <script src="./script/routerFind.js" type="module"></script>
+        <script src="./script/mine.js"></script>
+        <script src="./script/boxBaying.js" type="module"></script>
+
+    </body>
+</html>

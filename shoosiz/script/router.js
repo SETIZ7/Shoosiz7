@@ -1,5 +1,10 @@
 export default function FrouterObject(myRout) {
-    // console.log(myRout)
+    if(/\.\/choicePageG\?\d/.test(myRout)){
+        return{
+            title:' shoosiz / انتخواب کفش ',
+            rout:'./choicePageG.html'
+        }
+    }
     switch (myRout) {
         case './':
         case './index':
@@ -33,6 +38,15 @@ export default function FrouterObject(myRout) {
             }
             break;
 
+        case './boxBaying':
+        case './boxBaying.html':
+            return{
+                title:' bying | سبد خرید ',
+                rout:'./boxBaying.html'
+            }
+            break;
+
+            
         case './choicePageG':
         case './choicePageG.html':
             return{

@@ -4,7 +4,7 @@
     // header('Access-Control-Allow-Origin: *');
     // header('Access-Control-Allow-Methods: GET, POST');
     // header('Access-Control-Allow-Headers: Content-Type');
-
+/*
     header('Access-Control-Allow-Origin: http://localhost:3001'); // یا '*' برای همه دامنه‌ها
 header('Access-Control-Allow-Methods: GET, POST, OPTIONS');
 header('Access-Control-Allow-Headers: Content-Type, Authorization');
@@ -71,5 +71,91 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     ]);
 }
 
+*/
 
+
+
+require_once '../includes/JWT.php';
+use Firebase\JWT\JWT;
+
+// header("Access-Control-Allow-Origin: *");
+
+// header('Access-Control-Allow-Origin: http://localhost:3001'); // یا '*' برای همه دامنه‌ها
+// header("Access-Control-Allow-Origin: http://192.168.107.250:3001");
+
+// $allowed_origins = [
+//     "http://192.168.107.250:3001",
+//     "http://localhost:3001"
+// ];
+
+// if (isset($_SERVER['HTTP_ORIGIN']) && in_array($_SERVER['HTTP_ORIGIN'], $allowed_origins)) {
+//     header("Access-Control-Allow-Origin: " . $_SERVER['HTTP_ORIGIN']);
+// }
+
+if (isset($_SERVER['HTTP_ORIGIN'])) {
+    header("Access-Control-Allow-Origin: " . $_SERVER['HTTP_ORIGIN']);
+}
+
+header('Access-Control-Allow-Methods: GET, POST, OPTIONS');
+header('Access-Control-Allow-Headers: Content-Type, Authorization');
+header('Access-Control-Allow-Credentials: true');
+
+// اگر درخواست از نوع OPTIONS باشد، باید پاسخ بدهیم
+if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
+    header('HTTP/1.1 204 No Content');
+    exit;
+}
+
+// echo json_encode(['success' => false, 'message' => 'ورود موفقیت امیز بود!']);
+// exit;
+
+$secret_key = "my_secret_key";
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $input = json_decode(file_get_contents('php://input'), true);
+    
+    $email  = $input['email'] ?? '';
+    $password = $input['password'] ?? '';
+
+    if (!empty($email) && !empty($password)) {
+        $conn = new mysqli('localhost', 'root', '', 'shosiz');
+        
+        if ($conn->connect_error) {
+            die(json_encode(["success" => false, "message" => "خطا در اتصال به دیتابیس"]));
+        }
+
+        $stmt = $conn->prepare("SELECT first_name,id, password FROM userss WHERE email = ?");
+        $stmt->bind_param("s", $email);
+        $stmt->execute();
+        $stmt->store_result();
+
+        if ($stmt->num_rows > 0) {
+            $stmt->bind_result($first_name,$user_id, $stored_password);
+            $stmt->fetch();
+
+            if ($password == $stored_password) {
+                // ایجاد JWT
+                $payload = [
+                    "first_name" => $first_name,
+                    "user_id" => $user_id,
+                    "email" => $email,
+                    "exp" => time() + (60 * 60 * 24 * 7) // انقضا در 7 *24 ساعت
+                ];
+                $jwt = JWT::encode($payload, $secret_key, 'HS256');
+                // $decoded = JWT::decode($token, $secret_key, ['HS256']);
+
+                echo json_encode(["success" => true,  'message' => 'ورود موفقیت امیز بود!' ,"token" => $jwt]);
+            } else {
+                echo json_encode(["success" => false, "message" => "رمز عبور اشتباه است"]);
+            }
+        } else {
+            echo json_encode(["success" => false, "message" => "کاربر یافت نشد"]);
+        }
+
+        $stmt->close();
+        $conn->close();
+    } else {
+        echo json_encode(["success" => false, "message" => "ایمیل و رمز عبور الزامی هستند"]);
+    }
+}
 ?>

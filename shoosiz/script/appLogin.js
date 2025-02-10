@@ -165,7 +165,6 @@ let btnLoginChoice = document.getElementById('btnLoginChoice'),
     inputbox_emailCode = document.getElementsByClassName('inputbox_emailCode')[0],
     emailCodebox_parent = document.getElementsByClassName('emailCodebox_parent')[0]
 
-
 let intervalSubmitBTN
 
 
@@ -240,7 +239,34 @@ function FgetCookisUsernamePassword(cookie_name='') {
 
 
 
-let inputCodeSend='sssss';
+let inputCodeSend='sssss',
+inputCodeEmail=document.getElementsByClassName('inputCodeEmail')
+
+// document.addEventListener('paste',()=>{
+//     window.navigator.clipboard.readText().then(e=>{
+//         console.log(e.length==5)
+//     })
+// })
+for (const element of inputCodeEmail) {
+    element.firstElementChild.addEventListener('paste',()=>{
+        // console.log('first')
+        window.navigator.clipboard.readText().then(e=>{
+            if(e.length==5){
+                let i = 0
+                for (const elementt of inputCodeEmail) {
+        // console.log(i,elementt.firstElementChild.value,e)
+        elementt.firstElementChild.value= e[i]
+        i++
+        }
+    
+}
+        })
+    })
+}
+
+
+
+
 
 submitBtn.addEventListener('click', (e) => {
     e.preventDefault()
@@ -270,7 +296,7 @@ submitBtn.addEventListener('click', (e) => {
 
         if(loginStatuse=='signin'){
             // console.log(inputConfirmeitionFirstName.value)
-                            fetch('http://localhost/shooosiz/apis/regesterpart/register.php',{
+                            fetch('http://'+MyIp+'/shooosiz/apis/regesterpart/register.php',{
                                     method: 'POST',
                                          headers: {
                                            'Content-Type': 'application/json', 
@@ -292,8 +318,8 @@ submitBtn.addEventListener('click', (e) => {
                                     FsetCookisUsernamePassword('Shoosiz7LoginEmail',testEmail)
                                     FsetCookisUsernamePassword('Shoosiz7LoginPassword',testPassword)
                                 }
-                            history.pushState({},'','./index')
-                                FmeineGetHTMLcodeSPR('./index')
+                            history.pushState({},'','./login')
+                                FmeineGetHTMLcodeSPR('./login')
                             }
                                 }).catch(ee=>{
                                     console.log(ee)
@@ -301,11 +327,12 @@ submitBtn.addEventListener('click', (e) => {
                                 })
         }else{
                         // fetch('http://localhost/shooosiz/loginpart/login.php',{
-                            fetch('http://localhost/shooosiz/apis/loginpart/login.php',{
+                            fetch('http://'+MyIp+'/shooosiz/apis/loginpart/login.php',{
                                 // fetch('http://localhost/shooosiz/shoosiz/api/loginpart/login.php',{
                                     method: 'POST',
                                          headers: {
                                            'Content-Type': 'application/json', 
+                                        //    mode: "cors"
                                          },
                                          body: JSON.stringify({
                                             email:testEmail,
@@ -315,10 +342,20 @@ submitBtn.addEventListener('click', (e) => {
                                             credentials: 'include'
                                 }).then(ee=>{
                                     // console.log(ee)
+                                    // alert('fff')
                                     return ee.json();
                                 }).then(ee=>{
+                                    // if (ee.success) {
+
+                                    // } else {
+                                    //     console.error("خطا:", ee.message);
+                                    // }
+
+                                    // console.log(ee)
                                     FshowModule(ee.message, ee.success, 5000)
                             if(ee.success){
+                                localStorage.setItem("token", ee.token);
+                                // console.log("ورود موفقیت‌آمیز بود!", ee.token);
                                 if(myCheckboxRemember.checked){
                                     FsetCookisUsernamePassword('Shoosiz7LoginEmail',testEmail)
                                     FsetCookisUsernamePassword('Shoosiz7LoginPassword',testPassword)
@@ -334,7 +371,7 @@ submitBtn.addEventListener('click', (e) => {
 
      } else if (loginStatuse == 'unRemember') {
               if (emailRegex.test(testEmail)){
-                fetch('http://localhost/shooosiz/apis/findEmailpart/findEmail.php',{
+                fetch('http://'+MyIp+'/shooosiz/apis/findEmailpart/findEmail.php',{
                     method: 'POST',
                     headers: {
                       'Content-Type': 'application/json', 
@@ -371,7 +408,7 @@ submitBtn.addEventListener('click', (e) => {
             FshowModule(' رمز عبور باید با رمز عبور مجدد یکی باشد!', false, 3000)
             }else if(inputCode==inputCodeSend){
 
-                fetch('http://localhost/shooosiz/apis/changPass/changePass.php',{
+                fetch('http://'+MyIp+'/shooosiz/apis/changPass/changePass.php',{
                     // fetch('http://localhost/shooosiz/shoosiz/api/loginpart/login.php',{
                         method: 'POST',
                              headers: {
@@ -666,7 +703,17 @@ function FbackToLoginSigninBtn() {
 
 function Finputbox_emailCodeEventKeydown(e) {
     e.preventDefault()
-    if (e.key == 'Backspace') {
+    if(e.key=='v' && e.ctrlKey){
+        window.navigator.clipboard.readText().then(e=>{
+            if(e.length==5){
+                let i = 0
+                for (const elementt of inputCodeEmail) {
+        // console.log(i,elementt.firstElementChild.value,e)
+        elementt.firstElementChild.value= e[i]
+        i++
+        }}})
+
+    }else if (e.key == 'Backspace') {
         e.target.value = ''
         if (e.target.parentElement.previousElementSibling)
             e.target.parentElement.previousElementSibling.firstElementChild.focus();

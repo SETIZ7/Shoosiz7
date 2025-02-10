@@ -30,7 +30,15 @@ module.exports = (myRout) => {
               return{
                   title:' shoop | فروشگاه ',
                   rout:'./shoop.html'
-              }
+              };
+
+              case '/boxBaying':
+                case 'boxBaying':
+                    return{
+                        title:' bying | سبد خرید ',
+                        rout:'./boxBaying.html'
+                    };
+
       case '/choicePageG':
         return {
           title: 'Shoosiz / انتخاب کفش',

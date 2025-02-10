@@ -5,6 +5,7 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link href="./css/mine.css" rel="stylesheet">
+        <link href="./css/library/swiper.css" rel="stylesheet">
         <link href="./css/shoop.css" rel="stylesheet">
         <link href="./css/component/navigation.css" rel="stylesheet">
         <link rel="shortcut icon" href="./img/ChoicePageG/logo/Untitled-1.png" type="image/x-icon">
@@ -12,23 +13,58 @@
     </head>
     <body>
         <header>
-            <section class="section_headerMine">
-                
-            </section>
-            <section class="section_headerFooter">
-                
+            <section class="section_headerMineSlayder">
+                <!-- <div class="swiper-wrapper">
+            
+                    <div class="swiper-slide"> <img src="./img/headerBaner/بنر سایت copy.jpg" alt="baner"> </div>
+                    <div class="swiper-slide"> <img src="./img/headerBaner/نایک کفش copy.jpg" alt="baner"> </div>
+                    <div class="swiper-slide"> <img src="./img/headerBaner/2.jpg" alt="baner"> </div>
+                    
+                  </div>
+                  <div class="swiper-pagination"></div>
+  -->
+
+  <!-- particles.js container --> <div id="particles-js"></div> 
+   <!-- stats - count particles -->
+    <!-- <script src="http://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>  -->
+    <!-- <script src="http://threejs.org/examples/js/libs/stats.min.js"></script> -->
             </section>
         </header>
         <main>
-            <section class="section_main">
+            <hr class="main_CenterHr">
+            <section class="section_MineHeader">
+            <div class="section_MineHeaderLeft">
+                <div class="section_MineHeaderLeft_ExistentPro">  <span id="cunteProByExistent"> 24 </span> موجود  </div>
+                <div class="section_MineHeaderLeft_NonExistentPro"> <span id="cunteProByNotExistent"> 0 </span> ناموجود </div>
+            </div>
+
+            <div class="section_MineHeaderRight">
+                <ul>
+                    <li id="sqGeranBtn"> گران ترین </li>
+                    <li id="sqArzanBtn"> ارزان ترین </li>
+                    <li id="sqOfferBtn"> بیشترین تخفیف </li>
+                    <li id="sqNewBtn" class="active"> جدیدترین </li>
+                    <li> 
+<svg xmlns="http://www.w3.org/2000/svg" shape-rendering="geometricPrecision" text-rendering="geometricPrecision" image-rendering="optimizeQuality" fill-rule="evenodd" clip-rule="evenodd" viewBox="0 0 512 421.65"><path fill-rule="nonzero" d="M383.01 379.71c11.57 0 20.97 9.4 20.97 20.97 0 11.57-9.4 20.97-20.97 20.97l-362.04-.44C9.4 421.21 0 411.81 0 400.24c0-11.57 9.4-20.97 20.97-20.97l362.04.44zm-90.97-238.93c-7.91 7.94-20.8 7.99-28.74.08-7.94-7.91-7.99-20.8-.08-28.74L369.33 5.98c7.91-7.94 20.79-7.99 28.73-.08l107.98 107.91c7.95 7.94 7.95 20.87 0 28.81-7.94 7.95-20.87 7.95-28.81 0l-73.12-73.11.32 206.4c0 11.2-9.1 20.3-20.3 20.3-11.2 0-20.29-9.1-20.29-20.3l-.32-206.63-71.48 71.5zM171.62 40.59c11.57 0 20.97 9.41 20.97 20.98 0 11.56-9.4 20.97-20.97 20.97l-150.65-.16C9.4 82.38 0 72.97 0 61.4c0-11.56 9.4-20.97 20.97-20.97l150.65.16zm41.33 170.71c11.57 0 20.97 9.4 20.97 20.97 0 11.57-9.4 20.97-20.97 20.97l-191.98-.23C9.4 253.01 0 243.61 0 232.04c0-11.56 9.4-20.97 20.97-20.97l191.98.23z"/></svg>
+                         </li>
+                </ul>
+            </div>
+            </section>
+            <hr class="main_CenterHr">
+            <section class="section_main_Boxes">
+                <!-- <div  class="SugestionBestseller_boxes myTagSugestionBestseller_boxes" data-id-pro="1" data-shoozname="new shooz 11 start" data-shooz-point="3.4"></div>
+                <div  class="SugestionBestseller_boxes myTagSugestionBestseller_boxes" data-id-pro="1" data-shoozname="new shooz 11 start" data-shooz-point="3.4"></div>
+                <div  class="SugestionBestseller_boxes myTagSugestionBestseller_boxes" data-id-pro="1" data-shoozname="new shooz 11 start" data-shooz-point="3.4"></div>
+                <div  class="SugestionBestseller_boxes myTagSugestionBestseller_boxes" data-id-pro="1" data-shoozname="new shooz 11 start" data-shooz-point="3.4"></div> -->
 
             </section>
         </main>
 
-
         <script src="./script/component/Cnavigation.js"></script>
-        <script src="./script/mine.js"></script>
         <script src="./script/routerFind.js" type="module"></script>
-        <script src="./script/appShoop.js"></script>
+        <script src="./script/library/particles.min.js"></script>
+        <script src="./script/library/swiper.js"></script>
+        <script src="./script/appShoop.js" type="module"></script>
+        <script src="./script/mine.js"></script>
     </body>
 </html>

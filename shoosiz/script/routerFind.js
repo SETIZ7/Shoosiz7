@@ -1,4 +1,11 @@
 import router from './router.js'
+window.MyIp='192.168.107.250';
+// window.MyIp='192.168.1.3'
+// window.MyIp='192.168.1.4';
+// window.MyIp='192.168.45.1'
+// window.MyIp='192.168.193.250'
+
+
 
 // export function FmeineGetHTMLcodeSPR(urlName='.'+/(\/\w+(\.\w*|[^\/])$)/.exec(location.pathname)[0]) {
 //     // console.log(router(urlName).rout)
@@ -34,6 +41,17 @@ import router from './router.js'
 // }
 
 export function FmeineGetHTMLcodeSPR(urlName = '.' + /\/\w+(\.\w*|[^\/])$/.exec(location.pathname)[0],positionScrool=null) {
+    // console.log(urlName)
+    // console.log(router(urlName))
+
+    if(urlName=='loguot'){
+        localStorage.removeItem("token");
+        FmeineGetHTMLcodeSPR('./index')
+        
+        // location.reload()
+        return true
+    }
+
     fetch(router(urlName).rout).then((e) => {
         e.text().then(ee => {
            
@@ -61,8 +79,12 @@ export function FmeineGetHTMLcodeSPR(urlName = '.' + /\/\w+(\.\w*|[^\/])$/.exec(
         });
         return null;
     }).catch(e => {
-        console.log(e);
+        // console.log(e);
     });
+    // console.log('first')
+    // window.load()
+    // window.onload('f')
+
 }
 function loadScriptsSequentially(scripts, index) {
     if (index >= scripts.length) return;
@@ -121,14 +143,22 @@ function loadScriptsSequentially(scripts, index) {
 
 
 export default function FfixTagLinkA() {
+    // console.log(document.querySelectorAll('.aOtherPage'))
     document.querySelectorAll('.aOtherPage').forEach(e=>{
+
+    // console.log(e)
+
+
         e.addEventListener('click',ee=>{
             ee.preventDefault()
-            history.pushState({},'',e.href)
+            if(e.getAttribute('href')!='loguot'){
+                history.pushState({},'',e.href)
+            }
+
             if(!e.classList.contains('aOtherPageLink'))
             FmeineGetHTMLcodeSPR(e.getAttribute('href'))
         else{
-            console.log(e.getAttribute('href'))
+            e.getAttribute('href')
             FmeineGetHTMLcodeSPR(e.getAttribute('href'),100)
         }
         })
@@ -140,10 +170,11 @@ export default function FfixTagLinkA() {
 FfixTagLinkA();
 // [1,2].forEach
 
-    window.onpopstate=e=>{
+    window.onpopstate= async e=>{
         //         // e.preventDefault()
-        FmeineGetHTMLcodeSPR('.'+e.target.location.pathname)
-        }
+        await FmeineGetHTMLcodeSPR('.'+e.target.location.pathname)
+        // window.onload()
+    }
 
         
         fetch(window.location.href).then((e)=>{

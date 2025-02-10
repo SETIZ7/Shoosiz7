@@ -8,6 +8,7 @@
         <link rel="stylesheet" href="./css/mine.css">
         <link rel="stylesheet" href="./css/component/navigation.css">
         <link href="./css/styleChoicePageG.css" rel="stylesheet">
+        <link href="./css/component/messeg.css" rel="stylesheet">
         <meta name="theme-color" content="#000"/>
         <!-- <meta name="theme-color" content=""/> -->
         <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -25,7 +26,7 @@
             <div class="move_imgCenterZoom">AAAA</div>
             <!-- main image box : shooz -->
             <div class="main_content__box">
-                <img class="main_content__boxImg" src="./img/ChoicePageG/shoosh/p/JORDAN.png" alt="image">
+                <img class="main_content__boxImg" id="rightimg2By" src="./img/ChoicePageG/shoosh/p/JORDAN.png" alt="image">
             </div>
 
             <!-- main btn iconSize box : number -->
@@ -48,16 +49,16 @@
 
             <!-- main product angles box : box -->
             <div class="main_proAngles__imgBox">
-                <div class="angle_imgBox btn_dif"><img src="./img/ChoicePageG/shoosh/p/Back.png" alt="image" class="angle_img"></div>
-                <div class="angle_imgBox btn_dif"><img src="./img/ChoicePageG/shoosh/p/JORDAN.png" alt="image" class="angle_img"></div>
-                <div class="angle_imgBox btn_dif"><img src="./img/ChoicePageG/shoosh/p/removebg.png" alt="image" class="angle_img"></div>
-                <div class="angle_imgBox btn_dif"><img src="./img/ChoicePageG/shoosh/p/nnUp.png" alt="image" class="angle_img"></div>
+                <div class="angle_imgBox btn_dif"><img src="./img/ChoicePageG/shoosh/p/JORDAN.png" alt="image" class="angle_img" id="rightimgBy"></div>
+                <div class="angle_imgBox btn_dif"><img src="./img/ChoicePageG/shoosh/p/Back.png" alt="image" class="angle_img" id="backimgBy"></div>
+                <div class="angle_imgBox btn_dif"><img src="./img/ChoicePageG/shoosh/p/removebg.png" alt="image" class="angle_img" id="frontimgBy"></div>
+                <div class="angle_imgBox btn_dif"><img src="./img/ChoicePageG/shoosh/p/nnUp.png" alt="image" class="angle_img" id="topimgBy"></div>
             </div>
             
             <!-- main btn footer box : btn -->
             <div class="foterMain">
                 
-                <code class="foterMain_praiceProduct" id="PraiceFooter"> <h5> 250000 </h5> <h4> تومان </h4> </code>
+                <code class="foterMain_praiceProduct" id="PraiceFooter"> <h5 id="PraiceFooterBy"> 250000 </h5> <h4> تومان </h4> </code>
 
                 <button type="button" class="btn_dif foterMain_AddProduct">
                     <span>  افزودن به سبدخرید   </span>
@@ -81,20 +82,20 @@
                 
                 <div class="section_DModulePro__jens">
                     <h3>  جنس   </h3>
-                    <span>  پارچه   </span>
+                    <span id="typeBy">  پارچه   </span>
                 </div>
                 <hr class="section_DModulePro__HR">
                 
                 <div class="section_DModulePro__jenseZir">
                     <h3>  جنس زیره   </h3>
-                    <span>  پلی اورتان (PU)  </span>
+                    <span id="typecuminBy">  پلی اورتان (PU)  </span>
                 </div>
                 <hr class="section_DModulePro__HR">
 
                 <div class="section_DModulePro__propertis">
                     <h3>  ویژگی‌ها   </h3>
 
-                    <span class="section_DModulePro__propertisSpan"> 
+                    <span class="section_DModulePro__propertisSpan" id="propertisBy"> 
                         
                     <h4>   تخت  </h4>
                         
@@ -184,7 +185,8 @@
                 </div>
             </div>
         </footer>
-        <script src="./script/component/Cnavigation.js"></script>
+        <script src="./script/component/Cnavigation.js" type="module"></script>
+        <script src="./script/component/masseg.js" type="module"></script>
         <script src="./script/routerFind.js" type="module"></script>
         <script src="./script/mine.js"></script>
         <script src="./script/appChoicePageG.js" type="module"></script>

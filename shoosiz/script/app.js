@@ -1,6 +1,29 @@
+import {FmeineGetHTMLcodeSPR} from './routerFind.js';
 
 (function () {
   
+//   // const token = localStorage.getItem('token');  
+//   fetch('http://localhost/shooosiz/apis/loginpart/protected.php', {
+//     method: 'GET',
+//     headers: {
+//       // ...(token && { 'Authorization': 'Bearer ' + token }),
+//       "Authorization": `Bearer ${localStorage.getItem("token")}`,  
+//       'Content-Type': 'application/json'
+//     }
+// })
+// .then(response => response.json())
+// .then(data => {
+  
+  
+
+//   // console.log(data)
+
+// })
+// .catch(error => console.error('Error:', error));
+
+
+
+
   AOS.init();
 
 
@@ -135,7 +158,7 @@ let parallax = new Parallax(scene111);
 
               }
 
-              FgetTimeRemainder(new Date(2025,0,28))
+              FgetTimeRemainder(new Date(2025,1,5))
 
 
 
@@ -237,7 +260,7 @@ let parallax = new Parallax(scene111);
               ,positionScrollXFirst=0
               
               function FmousemoveElamentScroolHandler(e) {
-                console.log(positionScrollXFirst - e.clientX)
+                positionScrollXFirst - e.clientX
 
                 let MyScrollFunction = () =>{
                 this.scrollBy((positionScrollXFirst - e.clientX)*2,0)
@@ -276,5 +299,18 @@ let parallax = new Parallax(scene111);
               // })
 
 
-
+              let myTagSugestionBestseller_boxes = document.getElementsByClassName('myTagSugestionBestseller_boxes');
+              function FCreateElmByBox3() {
+                for (const element of myTagSugestionBestseller_boxes) {
+            
+                  element.querySelector('button.btnBayBayBox').onclick=(e)=>{
+                    history.pushState({},'','./choicePageG?'+element.dataset.idPro)
+                    FmeineGetHTMLcodeSPR('./choicePageG?'+element.dataset.idPro)
+        
+                    // console.log(element.dataset.idPro)
+                  }
+                }
+      
+              }
+              FCreateElmByBox3()
             })()

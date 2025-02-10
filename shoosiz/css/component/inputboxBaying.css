@@ -1,0 +1,16 @@
+@config "../../script/library/tailwind.config.js";
+@import 'tailwindcss';
+
+
+
+.parentColor p {
+    @apply text-red-500;
+  }
+
+  .btnCustomNeed{
+    @apply text-[var(--mainColorWWW)] px-4 py-2 cursor-pointer font-['Peyda'] hover:text-[var(--mainColorWW)] transition-all duration-300
+  }
+
+  .active{
+    @apply p-8 py-2 text-[var(--btnColorB)] rounded-md font-bold  hover:bg-[var(--mainColorWW)] bg-[var(--mainColorWWW)] hover:text-[var(--btnColorB)]
+  }
