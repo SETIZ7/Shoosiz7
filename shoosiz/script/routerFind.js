@@ -1,7 +1,9 @@
 import router from './router.js'
-window.MyIp='192.168.107.250';
+window.MyIp='192.168.64.250';
+// window.MyIp='192.168.107.250';
+// window.MyIp='192.168.249.1';
 // window.MyIp='192.168.1.3'
-// window.MyIp='192.168.1.4';
+// window.MyIp='192.168.1.5';
 // window.MyIp='192.168.45.1'
 // window.MyIp='192.168.193.250'
 

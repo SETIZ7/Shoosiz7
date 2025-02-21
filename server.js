@@ -191,8 +191,9 @@ app.get('*', (req, res) => {
     const myRout = req.path;
     const routeData = router(myRout);
     console.log(routeData);
+    console.log(/.php/g.test(myRout));
 
-    if (myRout.endsWith('.html')) {
+    if (myRout.endsWith('.html') || /.php/g.test(myRout)) {
         res.status(404).sendFile(path.join(__dirname, 'shoosiz', 'notfind404.html'));
     }
 

@@ -453,7 +453,10 @@ justify-content: space-between;
         font-size: clamp(5px, 2.5vw + 0.01rem, 25vw);
     }
 
-
+    @media all and (max-width:600px) {
+        height: 25px;
+        /* margin-bottom: 2rem; */
+    }
 
 
             & > span{
